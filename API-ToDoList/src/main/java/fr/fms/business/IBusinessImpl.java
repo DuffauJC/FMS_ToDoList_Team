@@ -13,8 +13,8 @@ import javax.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import fr.fms.dao.CategoryRepository;
@@ -98,15 +98,23 @@ public class IBusinessImpl implements IBusiness {
 		return user;
 	}
 
-	@Override
-	public String encodePassword(String password) {
-		PasswordEncoder pe = new BCryptPasswordEncoder();
-		return pe.encode(password);
-	}
+//	@Override
+//	public String encodePassword(String password) {
+//		PasswordEncoder pe = new BCryptPasswordEncoder();
+//		return pe.encode(password);
+//	}
 
 	public Date parseDate(String date) {
 			return new Date("yyyy-MM-dd HH:mm:ss");
 
+	}
+
+	/**
+	 * @return
+	 */
+	@Override
+	public List<Task> getTasks() {
+		return taskRepository.findAll();
 	}
 
 }

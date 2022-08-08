@@ -7,7 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.security.core.context.SecurityContextHolder;
+//import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -30,45 +30,45 @@ public class CategoryController {
 	@Autowired
 	IBusinessImpl business;
 		
-	@PostMapping("/saveCategory")
-	public String saveCategory(Model model, @Valid Category category, 
-			RedirectAttributes redirectAttrs) {	
-		String mail = SecurityContextHolder.getContext().getAuthentication().getName();
-		try {
-			Users user = business.getUserByMail(mail);
-			category.setUsers(user);
-			
-			business.saveOrUpdateCategory(category);
-		} catch (Exception e) {
-			redirectAttrs.addAttribute("error",e.getMessage());
-		}
-		
-		return "redirect:/editTasks";
-	}
+//	@PostMapping("/saveCategory")
+//	public String saveCategory(Model model, @Valid Category category,
+//			RedirectAttributes redirectAttrs) {
+//		String mail = SecurityContextHolder.getContext().getAuthentication().getName();
+//		try {
+//			Users user = business.getUserByMail(mail);
+//			category.setUsers(user);
+//
+//			business.saveOrUpdateCategory(category);
+//		} catch (Exception e) {
+//			redirectAttrs.addAttribute("error",e.getMessage());
+//		}
+//
+//		return "redirect:/editTasks";
+//	}
 	
-	@PostMapping("/updateCategory")
-	public String updateCategory(Model model, @Valid Category category, BindingResult bindingResult,
-            @RequestParam(value = "id") Long id, 
-			RedirectAttributes redirectAttrs) {
-		String mail = SecurityContextHolder.getContext().getAuthentication().getName();
-		 
-		if (bindingResult.hasErrors()) {
-			System.err.println(bindingResult.getAllErrors());
-            return "editTasks";
-        }
-		
-		try {
-			Users user = business.getUserByMail(mail);
-			Category cat = business.readCategoryById(id);
-			
-			category.setUsers(user);
-			if(cat != null) business.saveOrUpdateCategory(category);
-		} catch (Exception e) {
-			redirectAttrs.addAttribute("error",e.getMessage());
-		}
-
-		return "redirect:/editTasks";
-	}
+//	@PostMapping("/updateCategory")
+//	public String updateCategory(Model model, @Valid Category category, BindingResult bindingResult,
+//            @RequestParam(value = "id") Long id,
+//			RedirectAttributes redirectAttrs) {
+//		String mail = SecurityContextHolder.getContext().getAuthentication().getName();
+//
+//		if (bindingResult.hasErrors()) {
+//			System.err.println(bindingResult.getAllErrors());
+//            return "editTasks";
+//        }
+//
+//		try {
+//			Users user = business.getUserByMail(mail);
+//			Category cat = business.readCategoryById(id);
+//
+//			category.setUsers(user);
+//			if(cat != null) business.saveOrUpdateCategory(category);
+//		} catch (Exception e) {
+//			redirectAttrs.addAttribute("error",e.getMessage());
+//		}
+//
+//		return "redirect:/editTasks";
+//	}
 	
 	@GetMapping("/deleteCategory")
 	public String deleteCategory(Model model, Long id, RedirectAttributes redirectAttrs) {

@@ -96,9 +96,10 @@ public interface IBusiness {
 	 */
 	public Users getUserByMail(String mail) throws Exception;
 
-	public String encodePassword(String password);
+	//public String encodePassword(String password);
 
 	public Date parseDate(String date);
 
 
+	public List<Task> getTasks();
 }
