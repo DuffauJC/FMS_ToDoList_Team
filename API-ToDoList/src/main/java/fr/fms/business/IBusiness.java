@@ -3,6 +3,7 @@
  */
 package fr.fms.business;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -94,6 +95,10 @@ public interface IBusiness {
 	 * @throws Exception
 	 */
 	public Users getUserByMail(String mail) throws Exception;
+
+	public String encodePassword(String password);
+
+	public Date parseDate(String date);
 
 
 }

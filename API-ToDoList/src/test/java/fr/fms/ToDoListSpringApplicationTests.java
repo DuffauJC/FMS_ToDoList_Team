@@ -30,7 +30,7 @@ class ToDoListSpringApplicationTests {
 	@Test
 	void testAddTask() {
 		try {
-			business.saveOrUpdateTask(new Task(null, "TacheX", LocalDate.of(2022, 12, 31), "C'est une description de test", false, false));
+			business.saveOrUpdateTask(new Task(null, "TacheX", business.parseDate("2022-06-08 11:45:20"), "C'est une description de test", false, false));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
