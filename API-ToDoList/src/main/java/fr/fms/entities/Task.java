@@ -4,6 +4,7 @@
 package fr.fms.entities;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -43,7 +44,7 @@ public class Task {
 
 	@NotNull
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-	private LocalDate dateTask;
+	private Date dateTask;
 	
 	@NotNull
 	@Size(min = 2, max = 100, message = "La taille doit être comprise entre 2 et 100 caractères.")
@@ -69,7 +70,7 @@ public class Task {
 	 */
 	public Task(Long id,
 			@NotNull @Size(min = 2, max = 20, message = "La taille doit être comprise entre 2 et 50 caractères.") String nameTask,
-			@NotNull LocalDate dateTask,
+			@NotNull Date dateTask,
 			@NotNull @Size(min = 2, max = 100, message = "La taille doit être comprise entre 2 et 100 caractères.") String description,
 			boolean checked, boolean deleted) {
 		this.id = id;
@@ -79,6 +80,6 @@ public class Task {
 		this.checked = checked;
 		this.deleted = deleted;
 	}
-	
-	
+
+
 }
