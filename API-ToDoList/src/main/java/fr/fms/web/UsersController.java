@@ -5,8 +5,7 @@ package fr.fms.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import fr.fms.entities.Users;
 
@@ -14,7 +13,9 @@ import fr.fms.entities.Users;
  * @author Stagiaires10P
  *
  */
-@Controller
+@CrossOrigin("*")
+@RestController
+@RequestMapping("/api")
 public class UsersController {
 		
    @GetMapping("/login")
