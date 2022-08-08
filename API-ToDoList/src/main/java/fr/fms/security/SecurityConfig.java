@@ -55,7 +55,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		http.logout().logoutUrl("/logout").logoutSuccessUrl("/login");
 
-		http.authorizeRequests().antMatchers("/readTasks", "/editTasks").hasRole("USER");
+		http.authorizeRequests().antMatchers("/readTasks", "/editTasks").permitAll();
+		//http.authorizeRequests().antMatchers("/readTasks", "/editTasks").hasRole("USER");
 
 		http.exceptionHandling().accessDeniedPage("/403");
 	}
