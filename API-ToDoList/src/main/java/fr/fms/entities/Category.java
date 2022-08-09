@@ -14,9 +14,8 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -37,8 +36,8 @@ public class Category {
 	@Size(min = 2, max = 50, message = "La taille doit être comprise entre 2 et 50 caractères.")
 	private String name;
 	
-	@OneToMany(mappedBy = "category")
-	private Collection<Task> tasks;
+	@OneToMany(mappedBy = "category")@JsonIgnore
+	private Collection<Tasks> tasks;
 	
 	@ManyToOne
 	private Users users;
