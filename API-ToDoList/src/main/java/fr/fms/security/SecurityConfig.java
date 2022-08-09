@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package fr.fms.security;
 
@@ -33,8 +33,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "select mail as username, password as credentials, active from users where mail=?")
 
         .authoritiesByUsernameQuery(
-                		" SELECT users.mail as username, role.role as role FROM users"+        
-                		" INNER JOIN users_role ON users.id = users_role.users_id"+ 
+                		" SELECT users.mail as username, role.role as role FROM users"+
+                		" INNER JOIN users_role ON users.id = users_role.users_id"+
                 		" INNER JOIN role ON users_role.role_id = role.id WHERE users.mail =? ")
 
 
@@ -52,10 +52,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.formLogin()
 				.loginPage("/login").usernameParameter("mail").passwordParameter("password").defaultSuccessUrl("/readTasks")
 				.failureUrl("/login?error=true").permitAll();
-		
+
 		http.logout().logoutUrl("/logout").logoutSuccessUrl("/login");
 
-		http.authorizeRequests().antMatchers("/readTasks", "/editTasks").permitAll();
+		http.authorizeRequests().antMatchers("/readTasks", "/editTasks", "/saveTask").permitAll();
 		//http.authorizeRequests().antMatchers("/readTasks", "/editTasks").hasRole("USER");
 
 		http.exceptionHandling().accessDeniedPage("/403");

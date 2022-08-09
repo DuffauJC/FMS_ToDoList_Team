@@ -42,7 +42,7 @@ public class ToDoListSpringApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		System.out.println("Salut");
-		dataCreation();
+		//dataCreation();
 	}
 
 	public void dataCreation(){
