@@ -11,17 +11,17 @@ import { Observable } from 'rxjs';
 
 export class ApiService {
     constructor(private http: HttpClient) { }
-    
+
     //get usertask
     public getUserTasks(): Observable<any[]> {
         return this.http.get<any>(environment.host + "/usertasks")
     }
- 
-   
-   
+
+
+
     public login(data: any) {
- 
-        return this.http.post<any>(environment.host + "/login", data)
+        console.log(data)
+        return this.http.post<any>(environment.host + "/login/", data.mail)
     }
 
 

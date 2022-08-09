@@ -14,13 +14,13 @@ export class LoginComponent implements OnInit {
   error=true;
   ngForm: FormGroup
   data = {
-    username: "",
+    mail: "",
     password: ""
   }
   constructor(private apiService: ApiService,private router :Router) {
     
     this.ngForm = new FormGroup({
-      username: new FormControl(this.data.username),
+      mail: new FormControl(this.data.mail),
       password: new FormControl(this.data.password)
     })
    }
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   onLogin(form: FormGroup): void {
     //console.log(form.value);
     if (form.valid) {
-      this.data.username = form.value.username
+      this.data.mail = form.value.mail
       this.data.password = form.value.password
 
       //console.log(this.data)
