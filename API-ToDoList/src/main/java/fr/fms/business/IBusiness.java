@@ -79,7 +79,7 @@ public interface IBusiness {
 	 * @return Users
 	 * @throws Exception
 	 */
-	public Users getUserByMail(String mail) throws Exception;
+	public Optional<Users> getUserByMail(String mail) throws Exception;
 
 
 

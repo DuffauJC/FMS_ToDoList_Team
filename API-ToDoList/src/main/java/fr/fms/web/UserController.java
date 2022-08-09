@@ -6,8 +6,6 @@ import fr.fms.entities.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 
 @CrossOrigin("*")
 @RestController
@@ -20,7 +18,7 @@ public class UserController {
     // test login provisoire pour creer user dans localstorage
     @GetMapping("/login/{mail}")
     public Users userLogin(@PathVariable("mail") String mail) throws Exception {
-        return iBusiness.getUserByMail(mail);
+        return iBusiness.getUserByMail(mail).get();
     }
 
 

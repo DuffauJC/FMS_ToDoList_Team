@@ -10,7 +10,6 @@ import java.util.Optional;
 
 import javax.persistence.EntityManager;
 
-import fr.fms.entities.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
@@ -82,7 +81,7 @@ public class IBusinessImpl implements IBusiness {
 	}
 
 	@Override
-	public Users getUserByMail(String mail) throws Exception {
+	public Optional<Users> getUserByMail(String mail) throws Exception {
 //		Users userReceived =
 //		Users user = new Users(userReceived.getId(), userReceived.getMail(), userReceived.getPassword(),
 //				userReceived.getActive());
