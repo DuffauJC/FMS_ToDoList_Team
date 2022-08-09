@@ -25,6 +25,12 @@ public class RestTasksController {
         return iBusiness.getTasks();
     }
 
+    @DeleteMapping("/deleteTask/{id}")
+    public void deleteTraining(@PathVariable("id")Long id) throws Exception {
+        iBusiness.deleteTask(id);
+    }
+
+
     @GetMapping("/categorie")
     public List<Category> allCategories(){
         return iBusiness.getCategory();
