@@ -83,11 +83,10 @@ public class IBusinessImpl implements IBusiness {
 
 	@Override
 	public Users getUserByMail(String mail) throws Exception {
-		Users userReceived = usersRepository.findByMail(mail);
-		Users user = new Users(userReceived.getId(), userReceived.getMail(), userReceived.getPassword(),
-				userReceived.getActive());
-
-		return user;
+//		Users userReceived =
+//		Users user = new Users(userReceived.getId(), userReceived.getMail(), userReceived.getPassword(),
+//				userReceived.getActive());
+		return usersRepository.findByMail(mail);
 	}
 
 

@@ -15,33 +15,34 @@ export class ApiService {
     constructor(private http: HttpClient) { }
 
     //get usertask
-    public getUserTasks(){
+    public getUserTasks() {
         return this.http.get<Tasks[]>(environment.host + "/task/all")
     }
 
-    public getUserTask(id:number){
-      return this.http.get<Tasks>(environment.host + "/task" + id)
-  }
-
-    public getCategories(){
-      return this.http.get<Category[]>(environment.host + "/category/all")
-  }
-
-  public getCategory(id:number){
-    return this.http.get<Category>(environment.host + "/category" + id)
-}
 
 
 
     public login(data: any) {
-
-        return this.http.post<any>(environment.host + "/login", data)
+        console.log(data)
+        return this.http.post<any>(environment.host + "/login/", data.mail)
     }
+    public getUserTask(id: number) {
+        return this.http.get<Tasks>(environment.host + "/task" + id)
+    }
+
+    public getCategories() {
+        return this.http.get<Category[]>(environment.host + "/category/all")
+    }
+
+    public getCategory(id: number) {
+        return this.http.get<Category>(environment.host + "/category" + id)
+    }
+
 
 
     public editTask(task: Tasks) {
 
-      return this.http.post<Tasks>(environment.host + "/editTask", task)
-  }
+        return this.http.post<Tasks>(environment.host + "/editTask", task)
+    }
 
 }
