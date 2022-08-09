@@ -3,28 +3,23 @@ import { HttpClient, HttpEvent, HttpHeaders, HttpParams } from '@angular/common/
 
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-
-// import { Category } from '../model/category.model';
-
+import { Tasks } from '../model/tasks.model';
 
 @Injectable({ providedIn: 'root' })
 
 export class ApiService {
     constructor(private http: HttpClient) { }
     
-    //get usertask
     public getUserTasks(): Observable<any[]> {
-        return this.http.get<any>(environment.host + "/usertasks")
+        return this.http.get<any>(environment.host + "/readTasks")
     }
  
-   
-   
-    public login(data: any) {
- 
-        return this.http.post<any>(environment.host + "/login", data)
+    public saveTask(task : Tasks){
+        return this.http.post<Tasks>(environment.host + "/api/saveTask", task);
     }
-
-
-
+   
+    // public login(data: any) {
+    //     return this.http.post<any>(environment.host + "/login", data)
+    // }
 
 }

@@ -19,7 +19,6 @@ public class RestTasksController {
     @Autowired
     private IBusinessImpl iBusiness;
 
-
     @GetMapping("/readTasks")
     public List<Tasks> allUserTasks(){
         return iBusiness.getTasks();
@@ -28,5 +27,10 @@ public class RestTasksController {
     @GetMapping("/categorie")
     public List<Category> allCategories(){
         return iBusiness.getCategory();
+    }
+
+    @PostMapping("/saveTask")
+    public void saveTask(@RequestBody Tasks tasks) throws Exception {
+        iBusiness.saveOrUpdateTask(tasks);
     }
 }
