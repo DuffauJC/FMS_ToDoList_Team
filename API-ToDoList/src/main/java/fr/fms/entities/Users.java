@@ -17,6 +17,7 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -40,10 +41,10 @@ public class Users {
 	@NotNull
 	private String password;
 
-	@OneToMany(mappedBy = "users")
-	private Collection<Task> task;
+	@OneToMany(mappedBy = "users")@JsonIgnore
+	private Collection<Tasks> task;
 	
-	@OneToMany(mappedBy = "users")
+	@OneToMany(mappedBy = "users")@JsonIgnore
 	private Collection<Category> category;
 	
 	@NotNull
@@ -53,7 +54,7 @@ public class Users {
 	@JoinTable(
 			name = "users_role",
 			joinColumns = {@JoinColumn(name = "usersId")},
-			inverseJoinColumns = {@JoinColumn(name = "roleId")})
+			inverseJoinColumns = {@JoinColumn(name = "roleId")})@JsonIgnore
 	private List<Role> role;
 	
 	/**

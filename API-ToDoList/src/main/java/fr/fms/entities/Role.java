@@ -11,6 +11,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -36,7 +37,7 @@ public class Role {
 	@JoinTable(
 			name = "users_role",
 			joinColumns = {@JoinColumn(name = "roleId")},
-			inverseJoinColumns = {@JoinColumn(name = "usersId")})
+			inverseJoinColumns = {@JoinColumn(name = "usersId")})@JsonIgnore
 	private List<Users> users;
 
 	/**

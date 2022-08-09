@@ -6,10 +6,9 @@ package fr.fms.business;
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.data.domain.Page;
-
 import fr.fms.entities.Category;
-import fr.fms.entities.Task;
+import fr.fms.entities.Role;
+import fr.fms.entities.Tasks;
 import fr.fms.entities.Users;
 
 /**
@@ -17,15 +16,8 @@ import fr.fms.entities.Users;
  *
  */
 public interface IBusiness {
-	/**
-	 * Find all tasks where description contains keyword, by user. Return a list of tasks, organised by pages.
-	 * @param keyword
-	 * @param page
-	 * @param tasksByPage
-	 * @return Tasks By Page
-	 * @throws Exception
-	 */
-	Page<Task> readByDescriptionContains(String keyword, int page, int tasksByPage, Users users) throws Exception;
+
+
 
 	/**
 	 * Return a list of categories, by user, in database.
@@ -39,7 +31,7 @@ public interface IBusiness {
 	 * @param task
 	 * @throws Exception
 	 */
-	public void saveOrUpdateTask(Task task) throws Exception;
+	public void saveOrUpdateTask(Tasks task) throws Exception;
 	
 	/**
 	 * Method to add or update a category in database.
@@ -68,7 +60,7 @@ public interface IBusiness {
 	 * @return Task
 	 * @throws Exception
 	 */
-	public Task readTasksById(Long id) throws Exception;
+	public Tasks readTasksById(Long id) throws Exception;
 	
 	/**
 	 * Get Category by its id.
@@ -78,15 +70,7 @@ public interface IBusiness {
 	 */
 	public Category readCategoryById(Long id) throws Exception;
 	
-	/**
-	 * List of tasks by Category, organised by pages.
-	 * @param id
-	 * @param page
-	 * @param tasksByPage
-	 * @return Tasks by page
-	 * @throws Exception
-	 */
-	public Page<Task> readTasksByCategory(Long id, int page, int tasksByPage) throws Exception ;
+
 	
 	/**
 	 * Get user by its mail.
@@ -96,10 +80,12 @@ public interface IBusiness {
 	 */
 	public Users getUserByMail(String mail) throws Exception;
 
-	//public String encodePassword(String password);
+
 
 	public Date parseDate(String date);
 
 
-	public List<Task> getTasks();
+	public List<Tasks> getTasks();
+
+	public List<Category> getCategory();
 }

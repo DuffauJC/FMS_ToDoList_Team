@@ -3,7 +3,6 @@
  */
 package fr.fms.entities;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -32,9 +31,9 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@SQLDelete(sql = "UPDATE task SET deleted = true WHERE id=?")
+@SQLDelete(sql = "UPDATE tasks SET deleted = true WHERE id=?")
 @Where(clause = "deleted = false")
-public class Task {
+public class Tasks {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
@@ -68,7 +67,7 @@ public class Task {
 	 * @param checked
 	 * @param deleted
 	 */
-	public Task(Long id,
+	public Tasks(Long id,
 			@NotNull @Size(min = 2, max = 20, message = "La taille doit être comprise entre 2 et 50 caractères.") String nameTask,
 			@NotNull Date dateTask,
 			@NotNull @Size(min = 2, max = 100, message = "La taille doit être comprise entre 2 et 100 caractères.") String description,
