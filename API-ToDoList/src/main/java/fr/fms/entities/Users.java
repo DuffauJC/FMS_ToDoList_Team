@@ -79,6 +79,14 @@ public class Users {
 		this.password = password;
 		this.active = active;
 	}
+
+	public Users(Long id, @NotNull String mail, @NotNull String password, @NotNull Boolean active, @NotNull List<Role> role) {
+		this.id = id;
+		this.mail = mail;
+		this.password = password;
+		this.active = active;
+		this.role = role;
+	}
 	
 	/**
 	 * @param id

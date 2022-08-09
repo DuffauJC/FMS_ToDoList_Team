@@ -30,7 +30,7 @@ import lombok.ToString;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+//@ToString
 @SQLDelete(sql = "UPDATE tasks SET deleted = true WHERE id=?")
 @Where(clause = "deleted = false")
 public class Tasks {
@@ -79,6 +79,5 @@ public class Tasks {
 		this.checked = checked;
 		this.deleted = deleted;
 	}
-
-
+	
 }

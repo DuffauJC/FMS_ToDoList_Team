@@ -6,6 +6,7 @@ package fr.fms.business;
 ;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityManager;
 
@@ -71,13 +72,13 @@ public class IBusinessImpl implements IBusiness {
 
 
 	@Override
-	public Category readCategoryById(Long id) throws Exception {
-		return categoryRepository.findById(id).get();
+	public Optional<Category> readCategoryById(Long id) throws Exception {
+		return categoryRepository.findById(id);
 	}
 
 	@Override
-	public Tasks readTasksById(Long id) throws Exception {
-		return taskRepository.findById(id).get();
+	public Optional<Tasks> readTasksById(Long id) throws Exception {
+		return taskRepository.findById(id);
 	}
 
 	@Override
@@ -107,7 +108,7 @@ public class IBusinessImpl implements IBusiness {
 	 * @return
 	 */
 	@Override
-	public List<Category> getCategory() {
+	public List<Category> getCategories() {
 		return categoryRepository.findAll();
 	}
 
