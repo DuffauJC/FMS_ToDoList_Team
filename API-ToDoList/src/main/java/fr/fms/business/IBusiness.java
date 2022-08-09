@@ -5,6 +5,7 @@ package fr.fms.business;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import fr.fms.entities.Category;
 import fr.fms.entities.Role;
@@ -60,7 +61,7 @@ public interface IBusiness {
 	 * @return Task
 	 * @throws Exception
 	 */
-	public Tasks readTasksById(Long id) throws Exception;
+	public Optional<Tasks> readTasksById(Long id) throws Exception;
 	
 	/**
 	 * Get Category by its id.
@@ -68,7 +69,7 @@ public interface IBusiness {
 	 * @return Category
 	 * @throws Exception
 	 */
-	public Category readCategoryById(Long id) throws Exception;
+	public Optional<Category> readCategoryById(Long id) throws Exception;
 	
 
 	
@@ -87,5 +88,5 @@ public interface IBusiness {
 
 	public List<Tasks> getTasks();
 
-	public List<Category> getCategory();
+	public List<Category> getCategories();
 }

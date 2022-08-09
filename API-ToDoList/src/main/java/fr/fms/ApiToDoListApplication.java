@@ -37,6 +37,7 @@ public class ApiToDoListApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		System.out.println("Salut");
+		dataCreation();
 		//dataCreation();
 	}
 
@@ -46,7 +47,7 @@ public class ApiToDoListApplication implements CommandLineRunner {
 		Role user = roleRepository.save(new Role(null, "USER"));
 
 		Users user0 = usersRepository
-				.save(new Users(null, "c.lozzi@fms.com", "fms2022",  true));
+				.save(new Users(null, "c.lozzi@fms.com", "fms2022",  true ));
 		Users user1 = usersRepository
 				.save(new Users(null, "jc.duffau@fms.com", "fms2022",  true));
 		Users user2 = usersRepository
