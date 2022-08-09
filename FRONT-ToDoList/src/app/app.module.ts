@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { TaskModificationComponent } from './component/task-modification/task-modification.component';
 import { UserTasksComponent } from './component/user-tasks/user-tasks.component';
 import { LoginComponent } from './login/login.component';
 
@@ -13,7 +14,8 @@ import { LoginComponent } from './login/login.component';
   declarations: [
     AppComponent,
     UserTasksComponent,
-    LoginComponent
+    LoginComponent,
+    TaskModificationComponent
   ],
   imports: [
     BrowserModule,
@@ -21,11 +23,6 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
