@@ -34,5 +34,8 @@ public class TasksController {
         }
         return null;
     }
-
+    @DeleteMapping("/deleteTask/{id}")
+    public void deleteTraining(@PathVariable("id")Long id) throws Exception {
+        iBusiness.deleteTask(id);
+    }
 }
