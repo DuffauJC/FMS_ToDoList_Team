@@ -5,19 +5,24 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { TaskModificationComponent } from './component/task-modification/task-modification.component';
 import { UserTasksComponent } from './component/user-tasks/user-tasks.component';
+import { LoginComponent } from './login/login.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserTasksComponent
+    UserTasksComponent,
+    LoginComponent,
+    TaskModificationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

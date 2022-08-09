@@ -19,6 +19,17 @@
         0 -10px 20px #ff8000,
         0 -18px 40px #F00;
 }
+/*  img suppression */
+.x-del {
+    cursor: pointer;
+    margin: 5px;
+}
+/* edition */
+.x-edit {
+    cursor: pointer;
+    margin: 5px;
+}
+
 /*Variables CSS*/
 :root {
     --pastelYellow: #fefae8;
