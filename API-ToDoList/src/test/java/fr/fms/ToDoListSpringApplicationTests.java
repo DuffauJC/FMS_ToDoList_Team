@@ -9,11 +9,10 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Page;
-import org.springframework.security.core.context.SecurityContextHolder;
+
 
 import fr.fms.business.IBusinessImpl;
-import fr.fms.entities.Task;
+import fr.fms.entities.Tasks;
 import fr.fms.entities.Users;
 
 @SpringBootTest
@@ -30,7 +29,7 @@ class ToDoListSpringApplicationTests {
 	@Test
 	void testAddTask() {
 		try {
-			business.saveOrUpdateTask(new Task(null, "TacheX", business.parseDate("2022-06-08 11:45:20"), "C'est une description de test", false, false));
+			business.saveOrUpdateTask(new Tasks(null, "TacheX", business.parseDate("2022-06-08 11:45:20"), "C'est une description de test", false, false));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -90,15 +89,15 @@ class ToDoListSpringApplicationTests {
 		}
 	}
 	
-	@Test
-	void testReadByDescriptionContains() {
-		try {
-			Page<Task> listTasks = business.readByDescriptionContains("à faire", 0, 5, business.getUserByMail("test@test.fr"));
-			Task task = listTasks.getContent().get(0);
-			
-			assertEquals(task.getId(), (long) 18);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+//	@Test
+//	void testReadByDescriptionContains() {
+//		try {
+//			Page<Tasks> listTasks = business.readByDescriptionContains("à faire", 0, 5, business.getUserByMail("test@test.fr"));
+//			Tasks task = listTasks.getContent().get(0);
+//
+//			assertEquals(task.getId(), (long) 18);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 }

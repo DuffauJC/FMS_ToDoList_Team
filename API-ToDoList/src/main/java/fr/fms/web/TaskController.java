@@ -8,6 +8,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import fr.fms.entities.Tasks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,7 +20,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.fms.business.IBusinessImpl;
 import fr.fms.entities.Category;
-import fr.fms.entities.Task;
 import fr.fms.entities.Users;
 
 /**
@@ -39,7 +39,7 @@ public class TaskController {
 			@RequestParam(name = "keyword", defaultValue = "") String kw, 
 			@RequestParam(name = "category", defaultValue = "") Long idCat) {
 		
-		Page<Task> listTasks;
+		Page<Tasks> listTasks;
 		String mail = SecurityContextHolder.getContext().getAuthentication().getName();
 		
 		try {
@@ -47,7 +47,7 @@ public class TaskController {
 			
 			listTasks = business.readByDescriptionContains(kw, page, 5, user);
 			List<Category> listCategories = business.findAllCategoriesByUsers(user);
-			Page<Task> tasksByCat = business.readTasksByCategory(idCat, page, 5);	
+			Page<Tasks> tasksByCat = business.readTasksByCategory(idCat, page, 5);
 			
 			//listCategories.indexOf(business.readCategoryById());
 			
@@ -78,7 +78,7 @@ public class TaskController {
 	@GetMapping("/editTasks")
 	public String tasks(Model model, @RequestParam(name = "page", defaultValue = "0") int page,
 			@RequestParam(name = "keyword", defaultValue = "") String kw) {
-		Page<Task> listTasks;
+		Page<Tasks> listTasks;
 		String mail = SecurityContextHolder.getContext().getAuthentication().getName();
 		
 		try {
@@ -103,7 +103,7 @@ public class TaskController {
 	}
 
 	@PostMapping("/saveTask")
-	public String saveTask(Model model, @Valid Task task, 
+	public String saveTask(Model model, @Valid Tasks task,
 			RedirectAttributes redirectAttrs) {
 		String mail = SecurityContextHolder.getContext().getAuthentication().getName();
 		
@@ -136,7 +136,7 @@ public class TaskController {
 	}
 
 	@PostMapping("/updateTask")
-	public String updateArticle(@Valid Task task, BindingResult bindingResult, @RequestParam(value = "id") Long id,
+	public String updateArticle(@Valid Tasks task, BindingResult bindingResult, @RequestParam(value = "id") Long id,
 			@RequestParam(name = "page", defaultValue = "0") int page,
 			@RequestParam(name = "keyword", defaultValue = "") String keyword, 
 			RedirectAttributes redirectAttrs) {
@@ -145,7 +145,7 @@ public class TaskController {
 
 		try {
 			Users user = business.getUserByMail(mail);
-			Task taskToEdit = business.readTasksById(id);
+			Tasks taskToEdit = business.readTasksById(id);
 			
 			task.setUsers(user);
 

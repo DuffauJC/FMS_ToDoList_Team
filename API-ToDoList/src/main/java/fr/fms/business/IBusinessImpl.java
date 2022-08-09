@@ -3,24 +3,21 @@
  */
 package fr.fms.business;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import fr.fms.entities.Role;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+
 import org.springframework.stereotype.Service;
 
 import fr.fms.dao.CategoryRepository;
 import fr.fms.dao.TaskRepository;
 import fr.fms.dao.UsersRepository;
-import fr.fms.entities.Task;
+import fr.fms.entities.Tasks;
 import fr.fms.entities.Users;
 import fr.fms.entities.Category;
 
@@ -44,10 +41,7 @@ public class IBusinessImpl implements IBusiness {
 	@Autowired
 	EntityManager entityManager;
 
-	@Override
-	public Page<Task> readByDescriptionContains(String keyword, int page, int tasksByPage, Users user) throws Exception {       
-		return taskRepository.findByDescriptionContainsAndUsers(keyword, PageRequest.of(page, tasksByPage), user);
-	}
+
 	
 	@Override
 	public List<Category> findAllCategoriesByUsers(Users users) throws Exception {
@@ -55,7 +49,7 @@ public class IBusinessImpl implements IBusiness {
 	}
 
 	@Override
-	public void saveOrUpdateTask(Task task) throws Exception {
+	public void saveOrUpdateTask(Tasks task) throws Exception {
 		taskRepository.save(task);
 	}
 
@@ -74,10 +68,7 @@ public class IBusinessImpl implements IBusiness {
 		categoryRepository.deleteById(id);		
 	}
 
-	@Override
-	public Page<Task> readTasksByCategory(Long id, int page, int tasksByPage) throws Exception {
-		return taskRepository.findByCategoryId(id, PageRequest.of(page, tasksByPage));
-	}
+
 
 	@Override
 	public Category readCategoryById(Long id) throws Exception {
@@ -85,7 +76,7 @@ public class IBusinessImpl implements IBusiness {
 	}
 
 	@Override
-	public Task readTasksById(Long id) throws Exception {
+	public Tasks readTasksById(Long id) throws Exception {
 		return taskRepository.findById(id).get();
 	}
 
@@ -98,15 +89,27 @@ public class IBusinessImpl implements IBusiness {
 		return user;
 	}
 
-	@Override
-	public String encodePassword(String password) {
-		PasswordEncoder pe = new BCryptPasswordEncoder();
-		return pe.encode(password);
-	}
+
 
 	public Date parseDate(String date) {
 			return new Date("yyyy-MM-dd HH:mm:ss");
 
+	}
+
+	/**
+	 * @return
+	 */
+	@Override
+	public List<Tasks> getTasks() {
+		return taskRepository.findAll();
+	}
+
+	/**
+	 * @return
+	 */
+	@Override
+	public List<Category> getCategory() {
+		return categoryRepository.findAll();
 	}
 
 }
