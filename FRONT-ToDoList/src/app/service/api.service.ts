@@ -19,7 +19,7 @@ export class ApiService {
     }
 
     public saveTask(task : Tasks){
-        return this.http.post<Tasks>(environment.host + "/api/saveTask", task);
+        return this.http.post<Tasks>(environment.host + "/task/saveTask", task);
     }
 
     public login(data: any) {
