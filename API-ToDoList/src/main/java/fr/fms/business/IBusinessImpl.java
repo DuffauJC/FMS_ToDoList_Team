@@ -101,7 +101,7 @@ public class IBusinessImpl implements IBusiness {
 	 */
 	@Override
 	public List<Tasks> getTasks() {
-System.out.println(taskRepository.findAll());
+		//System.out.println(taskRepository.findAll());
 		return taskRepository.findAll();
 
 	}

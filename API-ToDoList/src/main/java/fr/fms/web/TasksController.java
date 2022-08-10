@@ -19,10 +19,9 @@ public class TasksController {
     @Autowired
     private IBusinessImpl iBusiness;
 
-
     @GetMapping("/all")
     public List<Tasks> allUserTasks(){
-        System.out.println("task interrogé : --->" + iBusiness.getTasks());
+        //System.out.println("task interrogé : --->" + iBusiness.getTasks());
         return iBusiness.getTasks();
     }
 

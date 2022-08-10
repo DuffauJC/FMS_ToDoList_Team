@@ -65,13 +65,13 @@ public class ApiToDoListApplication implements CommandLineRunner {
 		Category production = categoryRepository.save(new Category(null,"Production"));
 
 		Tasks Fake1 = taskRepository.save(new Tasks(null, "truc1",
-				new Date(), "Truc à test", true,formation.getName()));
+				new Date(), "Truc à test", true, formation));
 		Tasks Fake2 = taskRepository.save(new Tasks(null, "truc2",
-				new Date(), "Autre truc à test", true,marketing.getName()));
+				new Date(), "Autre truc à test", true,formation));
 		Tasks Fake3 = taskRepository.save(new Tasks(null, "truc3",
-				new Date(), "encore autre truc", true,formation.getName()));
+				new Date(), "encore autre truc", true,formation));
 		Tasks Fake4 = taskRepository.save(new Tasks(null, "truc4",
-				new Date(), "dernier truc à test", true,marketing.getName()));
+				new Date(), "dernier truc à test", true,formation));
 
 		/*
 		Tasks taskExemple0 = taskRepository.save(new Tasks(null, "exemple 0",
