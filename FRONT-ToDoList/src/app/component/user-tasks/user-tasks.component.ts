@@ -93,7 +93,7 @@ export class UserTasksComponent implements OnInit {
 
   openPopup() {
     this.displayStyle = "block";
-    //this.displayBlur = "blur(4px)";
+    this.displayBlur = "blur(4px)";
   }
 
   closePopup() {

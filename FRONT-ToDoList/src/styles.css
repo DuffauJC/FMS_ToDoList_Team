@@ -39,6 +39,19 @@
     background-color: black;
 }
 
+/* modal create */
+#modalSize{
+    border: 3px solid #f7e7de;
+}
+
+
+
+
+
+
+
+
+
 /*Variables CSS*/
 :root {
     --pastelYellow: #fefae8;
