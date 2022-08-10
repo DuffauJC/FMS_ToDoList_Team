@@ -37,7 +37,7 @@ public class ApiToDoListApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		System.out.println("Salut");
-		dataCreation();
+		//dataCreation();
 		//dataCreation();
 	}
 

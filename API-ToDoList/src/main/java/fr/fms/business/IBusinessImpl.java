@@ -10,7 +10,6 @@ import java.util.Optional;
 
 import javax.persistence.EntityManager;
 
-import fr.fms.entities.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
@@ -112,4 +111,8 @@ public class IBusinessImpl implements IBusiness {
 		return categoryRepository.findAll();
 	}
 
+	@Override
+    public List<Tasks> readTasksByDescriptionContains(String description) {
+		return taskRepository.findByDescriptionContains(description);
+    }
 }

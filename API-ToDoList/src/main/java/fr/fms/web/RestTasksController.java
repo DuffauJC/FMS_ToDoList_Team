@@ -31,8 +31,8 @@ public class RestTasksController {
     }
 
 
-    @GetMapping("/categorie")
-    public List<Category> allCategories(){
-        return iBusiness.getCategory();
-    }
+//    @GetMapping("/categorie")
+//    public List<Category> allCategories(){
+//        return iBusiness.getCategory();
+//    }
 }

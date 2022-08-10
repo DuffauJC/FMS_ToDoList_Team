@@ -35,4 +35,9 @@ public class TasksController {
         return null;
     }
 
+    @GetMapping("/research/{description}")
+    public List<Tasks> getTasksBySearch (@PathVariable("description")String description){
+        List<Tasks> tasksBySearch= iBusiness.readTasksByDescriptionContains(description);
+        return tasksBySearch;
+    }
 }

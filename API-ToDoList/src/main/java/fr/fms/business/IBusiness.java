@@ -89,4 +89,6 @@ public interface IBusiness {
 	public List<Tasks> getTasks();
 
 	public List<Category> getCategories();
+
+    List<Tasks> readTasksByDescriptionContains(String string);
 }
