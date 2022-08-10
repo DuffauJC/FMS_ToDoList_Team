@@ -3,7 +3,7 @@
  */
 package fr.fms.business;
 
-;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -45,7 +45,8 @@ public class IBusinessImpl implements IBusiness {
 	
 	@Override
 	public List<Category> findAllCategoriesByUsers(Users users) throws Exception {
-		return categoryRepository.findAllByUsers(users);
+		//return categoryRepository.findAllByUsers(users);
+		return null;
 	}
 
 	@Override
@@ -81,7 +82,7 @@ public class IBusinessImpl implements IBusiness {
 	}
 
 	@Override
-	public Users getUserByMail(String mail) throws Exception {
+	public Optional<Users> getUserByMail(String mail) throws Exception {
 //		Users userReceived =
 //		Users user = new Users(userReceived.getId(), userReceived.getMail(), userReceived.getPassword(),
 //				userReceived.getActive());
@@ -100,7 +101,9 @@ public class IBusinessImpl implements IBusiness {
 	 */
 	@Override
 	public List<Tasks> getTasks() {
+System.out.println(taskRepository.findAll());
 		return taskRepository.findAll();
+
 	}
 
 	/**

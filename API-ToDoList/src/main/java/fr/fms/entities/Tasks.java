@@ -30,9 +30,6 @@ import lombok.ToString;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-//@ToString
-@SQLDelete(sql = "UPDATE tasks SET deleted = true WHERE id=?")
-@Where(clause = "deleted = false")
 public class Tasks {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -50,14 +47,14 @@ public class Tasks {
 	private String description;
 
 	private boolean checked;
-	
-	private boolean deleted = Boolean.FALSE;
-	
-	@ManyToOne
-	private Category category;
-	
-	@ManyToOne
-	private Users users;
+
+
+//	@ManyToOne
+//	private Category category;
+
+	private String category;
+//	@ManyToOne
+//	private Users users;
 
 	/**
 	 * @param id
@@ -65,19 +62,7 @@ public class Tasks {
 	 * @param dateTask
 	 * @param description
 	 * @param checked
-	 * @param deleted
+	 * @param category
 	 */
-	public Tasks(Long id,
-			@NotNull @Size(min = 2, max = 20, message = "La taille doit être comprise entre 2 et 50 caractères.") String nameTask,
-			@NotNull Date dateTask,
-			@NotNull @Size(min = 2, max = 100, message = "La taille doit être comprise entre 2 et 100 caractères.") String description,
-			boolean checked, boolean deleted) {
-		this.id = id;
-		this.nameTask = nameTask;
-		this.dateTask = dateTask;
-		this.description = description;
-		this.checked = checked;
-		this.deleted = deleted;
-	}
 	
 }

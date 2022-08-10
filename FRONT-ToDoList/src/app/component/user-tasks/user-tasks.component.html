@@ -4,19 +4,15 @@
         <div class="d-flex flex-column col-4">
             <h5 class="mt-3">Liste des catégories</h5>
             <div class="d-flex flex-column">
-              <div *ngFor="let cat of categories"></div>
-              <button class="btn btn-custom mt-3 w-100" type="button">cat.name</button>
-              <button class="btn btn-custom mt-3 w-100" type="button" value="cat.name"></button>
-              <button class="btn btn-custom mt-3 w-100" type="button" value=cat.name></button>
-              <!--
-                <button class="btn btn-custom mt-3 w-100" type="button">category.name</button>
-                <button class="btn btn-custom mt-3 w-100" type="button">Courses</button>
-                <button class="btn btn-custom mt-3 w-100" type="button">Bébé</button>
-                <button class="btn btn-custom mt-3 w-100" type="button">Travail</button>
-                <button class="btn btn-custom mt-3 w-100" type="button">Famille</button>
-                -->
+              <div *ngFor="let c of categories">
+
+              <button class="btn btn-custom mt-3 w-100" type="button" value="Input">{{c.name}}</button>
+            </div>
             </div>
         </div>
+
+
+
 
         <div class="col-8">
             <h5 class="mt-3">Liste des tâches</h5>
@@ -24,17 +20,18 @@
             <div class="row mt-3 mb-5">
 
                 <!--  exemple d'item  -->
-                    <div>
+                <div *ngFor="let t of tasks">
                         <div class="d-flex flex-row justify-content-between">
-                            <p> Tâche : Noël </p>
-                            <p class="mb-0"> Catégorie : Famille </p>
-                            <p> Date : 2022-12-24 </p>
+                            <p>{{t.nameTask}}</p>
+                            <p class="mb-0"> Catégorie : {{t.category}} </p>
+                            <!--<p class="mb-0"> Catégorie : {{t.category.name}} </p>-->
+                            <p> Date : {{t.dateTask}} </p>
                         </div>
                         <div
                             class="d-flex flex-row shadow-lg p-3 mb-0 bg-body rounded w-100 mb-5 justify-content-between">
                             <div class="d-flex flex-row align-items-center">
                                 <input type="checkbox" checked class="me-3" />
-                                <p class="mb-0 checked">Acheter les cadeaux de Noël</p>
+                                <p class="mb-0 checked">{{t.description}}</p>
                             </div>
 
                             <div>
@@ -43,6 +40,8 @@
                             </div>
                         </div>
                     </div>
+
+
 
 
 
