@@ -85,27 +85,7 @@ getTaskById(id: number) {
 
 openPopup() {
   this.displayStyle = "block";
-  this.displayBlur = "blur(4px)";
-}
-
-onAddTask(form: FormGroup): void{ 
-  //myForm (quand udpate) ou le newTask (quand new task)
-  this.newTask.nameTask = form.value.nameTask
-  this.newTask.dateTask = form.value.dateTask
-  this.newTask.description = form.value.description
-  this.newTask.checked = false;
-  this.newTask.deleted = false;
-  this.newTask.category = form.value.category
-
-  console.log(this.newTask)
-  
-  if(confirm("Valider l'ajout de la formation ?")){
-    this.apiService.saveTask(this.newTask).subscribe({
-      next: (data) => console.log("data " + data),
-      error: (err) => this.error = err.message,
-      complete: () => this.error = null
-     })
-  }
+  //this.displayBlur = "blur(4px)";
 }
 
 closePopup() {

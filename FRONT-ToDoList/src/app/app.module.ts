@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { TaskModificationComponent } from './component/task-modification/task-modification.component';
 import { UserTasksComponent } from './component/user-tasks/user-tasks.component';
 import { LoginComponent } from './login/login.component';
+import { CreateTasksComponent } from './component/create-tasks/create-tasks.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { LoginComponent } from './login/login.component';
     AppComponent,
     UserTasksComponent,
     LoginComponent,
-    TaskModificationComponent
+    TaskModificationComponent,
+    CreateTasksComponent
 
   ],
   imports: [
