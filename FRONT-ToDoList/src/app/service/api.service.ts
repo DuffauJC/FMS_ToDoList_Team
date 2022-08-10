@@ -43,4 +43,9 @@ export class ApiService {
         return this.http.post<Tasks>(environment.host + "/editTask", task)
     }
 
+
+    public getTasksBySearch(description: String){
+        return this.http.get<Tasks[]>(environment.host + "/api/research/"+ description)
+    }
+
 }
