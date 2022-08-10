@@ -23,7 +23,7 @@
                 <div *ngFor="let t of tasks">
                         <div class="d-flex flex-row justify-content-between">
                             <p>{{t.nameTask}}</p>
-                            <p class="mb-0"> Catégorie : {{t.category}} </p>
+                            <p class="mb-0"> Catégorie : {{t.category.name}} </p>
                             <!--<p class="mb-0"> Catégorie : {{t.category.name}} </p>-->
                             <p> Date : {{t.dateTask}} </p>
                         </div>
