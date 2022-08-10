@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from '../model/user.model';
+import { Users } from '../component/models/users.model';
 import { ApiService } from './api.service';
 
 @Injectable({ providedIn: 'root' })
@@ -40,16 +40,16 @@ export class AuthenticateService {
 
     }
 
-    // set customer in storage
+    // set user in storage
     setUserInStorage(data: any) {
         localStorage.setItem('user', JSON.stringify(data));
 
     }
-    // get customer from storage
+    // get user from storage
     getUserFromStorage() {
         let user = localStorage.getItem('user');
         if (user) return JSON.parse(user);
-        return new User(0,true,"")
+        return null
     }
     removeUserFromStorage() {
         localStorage.removeItem('user')

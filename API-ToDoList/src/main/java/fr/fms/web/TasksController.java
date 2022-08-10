@@ -33,6 +33,10 @@ public class TasksController {
         return null;
     }
 
+    @PostMapping("/saveTask")
+    public void saveTask(@RequestBody Tasks tasks) throws Exception {
+        iBusiness.saveOrUpdateTask(tasks);
+    }
 
     @GetMapping("/research/{description}")
     public List<Tasks> getTasksBySearch(@PathVariable("description") String description) {
