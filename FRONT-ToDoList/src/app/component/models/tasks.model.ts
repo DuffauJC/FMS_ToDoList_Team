@@ -1,32 +1,33 @@
 import { Category } from "./category.model";
+import { Users } from "./users.model";
 
 export class Tasks {
   id: number;
-  nameTask: String;
+  nameTask: string;
   dateTask : Date;
-  description : String;
+  description : string;
   checked : boolean;
-  deleted: boolean;
+  // deleted: boolean;
   category : Category;
-  //users : Users;
+  users : Users;
 
   constructor(id: number,
-    nameTask: String,
+    nameTask: string,
     dateTask : Date,
-    description : String,
+    description : string,
     checked : boolean,
-    deleted: boolean,
+    // deleted: boolean,
     category : Category,
-    //users : String
+    users : Users
     ) {
     this.id = id;
     this.nameTask = nameTask;
     this.dateTask = dateTask;
     this.description = description;
     this.checked = checked;
-    this.deleted = deleted;
+    // this.deleted = deleted;
     this.category = category;
-    //this.users = users;
+    this.users = users;
   }
 
 }

@@ -50,10 +50,9 @@ public class Tasks {
 
 	@ManyToOne
 	private Category category;
-//
-//	private String category;
-//	@ManyToOne
-//	private Users users;
+
+	@ManyToOne
+	private Users users;
 
 	/**
 	 * @param id

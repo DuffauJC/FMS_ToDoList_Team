@@ -25,8 +25,8 @@
                     </div>
                     <div class="d-flex flex-row shadow-lg p-3 mb-0 bg-body rounded w-100 mb-5 justify-content-between">
                         <div class="d-flex flex-row align-items-center">
-                            <input type="checkbox" checked class="me-3" />
-                            <p class="mb-0 checked">{{t.description}}</p>
+                            <input type="checkbox" class="me-3" [(ngModel)]="t.checked" />
+                            <p class="mb-0">{{t.description}}</p>
                         </div>
                         <div>
                             <a><img class="x-edit" src="/assets/img/edit.png" alt="edit"></a>
@@ -40,21 +40,21 @@
 
         </div>
     </div>
+</div>
+<!-- Modal -->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" id="modalSize">
+            <div class="modal-header bgPastelYellow">
+                <button type="button" class="btn bgPastelLightPurple" data-dismiss="modal" aria-label="Close"
+                    (click)="closePopup()"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Ajouter une tâche</h4>
+            </div>
+            <div class="modal-body">
 
-    <!-- Modal -->
-    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content" id="modalSize">
-                <div class="modal-header">
-                    <button type="button" class="btn" data-dismiss="modal" aria-label="Close"
-                        (click)="closePopup()"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Ajouter une tâche</h4>
-                </div>
-                <div class="modal-body">
+                <app-create-tasks></app-create-tasks>
 
-                    <app-create-tasks></app-create-tasks>
-
-                </div>
             </div>
         </div>
     </div>
+</div>
