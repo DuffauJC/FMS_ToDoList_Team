@@ -45,8 +45,15 @@ export class ApiService {
     }
 
 
+
+    public getTasksBySearch(description: String){
+        return this.http.get<Tasks[]>(environment.host + "/task/research/"+ description)
+    }
+
     public delTask(task: Tasks) {
         return this.http.delete(environment.host +"/task/deleteTask/"+task.id)
+
     }
 
 }
+
