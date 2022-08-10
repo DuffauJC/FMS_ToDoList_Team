@@ -20,13 +20,13 @@ export class UserTasksComponent implements OnInit {
   modalAction ="";
 
   searchForm: FormGroup;
-
   myForm: FormGroup;
-
   newSearch="";
   researchTasks: Tasks[]= [];
 
-
+// pagination
+  pages: number = 1
+  
   //modal add article
   displayStyle = "none";
   displayBlur = "blur(0)"

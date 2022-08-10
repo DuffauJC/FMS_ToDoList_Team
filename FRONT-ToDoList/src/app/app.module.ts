@@ -8,7 +8,10 @@ import { AppComponent } from './app.component';
 import { UserTasksComponent } from './component/user-tasks/user-tasks.component';
 import { LoginComponent } from './login/login.component';
 import { CreateTasksComponent } from './component/create-tasks/create-tasks.component';
+
 import { EditTaskComponent } from './component/edit-task/edit-task.component';
+
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -27,6 +30,7 @@ import { EditTaskComponent } from './component/edit-task/edit-task.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

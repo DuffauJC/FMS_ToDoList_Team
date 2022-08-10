@@ -53,8 +53,7 @@ export class EditTaskComponent implements OnInit {
     this.taskToEdit.nameTask = form.value.nameTask
     this.taskToEdit.dateTask = form.value.dateTask
     this.taskToEdit.description = form.value.description
-    this.taskToEdit.checked = false;
-    // this.newTask.deleted = false;
+    this.taskToEdit.checked = false
     this.taskToEdit.category = form.value.category
     this.taskToEdit.users = this.authService.getUserFromStorage();
 
