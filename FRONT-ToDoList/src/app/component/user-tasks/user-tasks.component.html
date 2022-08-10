@@ -39,31 +39,33 @@
                             <p class="mb-0">{{t.description}}</p>
                         </div>
                         <div>
-                            <a><img class="x-edit" src="/assets/img/edit.png" alt="edit"></a>
+                            <a><img class="x-edit" src="/assets/img/edit.png" alt="edit" (click)="editPopup(t)"></a>
                             <a><img class="x-del" src="/assets/img/x-button.png" alt="delete" (click)="delTask(t)"></a>
                         </div>
                     </div>
                 </div>
                 <pagination-controls (pageChange)="pages = $event"></pagination-controls>
             </div>
-            <button type="button" class="btn mb-5 bgPastelPinkOrange" (click)="openPopup()">Ajouter unetâche</button>
+            <button type="button" class="btn mb-5 bgPastelPinkOrange" (click)="createPopup()">Ajouter unetâche</button>
         </div>
     </div>
 </div>
 <!-- Modal -->
 <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content" id="modalSize">
-            <div class="modal-header bgPastelYellow">
-                <button type="button" class="btn bgPastelLightPurple" data-dismiss="modal" aria-label="Close"
-                    (click)="closePopup()"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Ajouter une tâche</h4>
-            </div>
-            <div class="modal-body">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content" id="modalSize">
+          <div class="modal-header bgPastelYellow">
+              <button type="button" class="btn bgPastelPurple" data-dismiss="modal" aria-label="Close"
+                  (click)="closePopup()"><span aria-hidden="true">&times;</span></button>
+              <h4 *ngIf="modalAction=='C'" class="modal-title" id="myModalLabel">Ajouter une tâche</h4>
+              <h4 *ngIf="modalAction=='E'" class="modal-title" id="myModalLabel">Modifier une tâche</h4>
+          </div>
+          <div class="modal-body">
 
-                <app-create-tasks></app-create-tasks>
+              <app-create-tasks *ngIf="modalAction=='C'"></app-create-tasks>
+              <app-edit-task *ngIf="modalAction=='E'"></app-edit-task>
 
-            </div>
-        </div>
-    </div>
+          </div>
+      </div>
+  </div>
 </div>

@@ -15,9 +15,10 @@ export class UserTasksComponent implements OnInit {
   categories: Category[] = [];
   tasks: Tasks[] = [];
   category: Category | undefined;
-  task: Tasks | undefined;
+  task!: Tasks;
   error = null;
-  
+  modalAction ="";
+
   searchForm: FormGroup;
   myForm: FormGroup;
   newSearch="";
@@ -53,10 +54,10 @@ export class UserTasksComponent implements OnInit {
     });
     this.searchForm = new FormGroup({
       newSearch: new FormControl(this.newSearch),
-     
+
     });
   }
-  
+
 
   ngOnInit(): void {
     // console.log(this.categories + "-----------------------------" + this.tasks);
@@ -102,9 +103,17 @@ export class UserTasksComponent implements OnInit {
     });
   }
 
-  openPopup() {
+  createPopup() {
+    this.modalAction="C";
     this.displayStyle = "block";
     this.displayBlur = "blur(4px)";
+  }
+
+  editPopup(t : Tasks){
+    this.modalAction = "E";
+    this.displayStyle = "block";
+    this.displayBlur = "blur(4px)";
+    this.task=t
   }
 
   closePopup() {
@@ -113,6 +122,10 @@ export class UserTasksComponent implements OnInit {
     setTimeout(() => {
       this.ngOnInit()
     }, 1500)
+  }
+
+  getTargetTask(){
+    return this.task;
   }
 
   // delete task
@@ -137,6 +150,7 @@ export class UserTasksComponent implements OnInit {
         error: (err) => (this.error = err.message),
         complete: () => (this.error = null),
       });
+<<<<<<< HEAD
   
     }
 
@@ -148,5 +162,8 @@ export class UserTasksComponent implements OnInit {
         complete: () => this.error =null
       })
     }
+=======
+  }
+>>>>>>> bf358ffe41bce0813946d913af5afecf89131a73
 }
 

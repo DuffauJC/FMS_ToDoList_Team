@@ -3,9 +3,9 @@
 }
 .home {
     box-shadow: 10px 10px 5px 0px #fefae8;
-    background-image: url('/assets/img/toDoHome.jpg');
-    background-position: center;
+    background-image: url('/assets/img/hometask.png');
     height: 500px;
+    width: 1100px !important;
 }
 .home h1 {
     color: white;
