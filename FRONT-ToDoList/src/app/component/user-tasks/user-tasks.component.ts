@@ -11,17 +11,20 @@ import { Tasks } from '../models/tasks.model';
   styleUrls: ['./user-tasks.component.css']
 })
 export class UserTasksComponent implements OnInit {
-  myForm: FormGroup;
-  categories : Category[]  =[];
-  tasks : Tasks[] =[];
-  category : Category | undefined;
-  task : Tasks | undefined;
+
+  categories: Category[] = [];
+  tasks: Tasks[] = [];
+  category: Category | undefined;
+  task: Tasks | undefined;
   error = null;
 
-    //modal add article
-    displayStyle = "none";
-    displayBlur = "blur(0)"
-    display = false
+  myForm: FormGroup;
+
+
+  //modal add article
+  displayStyle = "none";
+  displayBlur = "blur(0)"
+  display = false
 
   newTask = {
     id: 0,
@@ -33,7 +36,8 @@ export class UserTasksComponent implements OnInit {
     category: {} as Category
   };
 
-    constructor(public apiService: ApiService, private router: Router) { 
+
+  constructor(public apiService: ApiService, private router: Router) {
     this.myForm = new FormGroup({
       nameTask: new FormControl(this.newTask.nameTask),
       dateTask: new FormControl(this.newTask.dateTask),
@@ -44,53 +48,69 @@ export class UserTasksComponent implements OnInit {
     });
   }
 
-ngOnInit(): void {
-  console.log(this.categories + "-----------------------------"+ this.tasks);
-this.getAllTasks();
-this.getAllCategories();
-console.log(this.categories + "+++++++++++++++++++++++++++++++"+ this.tasks);
+  ngOnInit(): void {
+    // console.log(this.categories + "-----------------------------" + this.tasks);
+    this.getAllTasks();
+    this.getAllCategories();
+    //console.log(this.categories + "+++++++++++++++++++++++++++++++" + this.tasks);
+  }
+
+  getAllTasks() {
+    this.apiService.getUserTasks().subscribe({
+      next: (data) => (this.tasks = data
+        //console.log("-------->" + data), this.tasks.forEach(t => console.log(t))
+      ),
+      error: (err) => (this.error = err.message),
+      complete: () => (this.error = null),
+    });
+  }
+  getTaskById(id: number) {
+    this.apiService.getUserTask(id).subscribe({
+      next: (data) => (this.task = data),
+      error: (err) => (this.error = err.message),
+      complete: () => (this.error = null),
+    });
+  }
+
+
+  getAllCategories() {
+    this.apiService.getCategories().subscribe({
+      next: (data) => (this.categories = data
+        // console.log("-------->" + data, this.categories.forEach(c => console.log(c)))
+      ),
+      error: (err) => (this.error = err.message),
+      complete: () => (this.error = null),
+    });
+  }
+
+  getCategoryById(id: number) {
+    this.apiService.getCategory(id).subscribe({
+      next: (data) => (this.category = data),
+      error: (err) => (this.error = err.message),
+      complete: () => (this.error = null),
+    });
+  }
+
+  openPopup() {
+    this.displayStyle = "block";
+    this.displayBlur = "blur(4px)";
+  }
+
+  closePopup() {
+    this.displayStyle = "none";
+    this.displayBlur = "blur(0)"
+  }
+
+  // delete task
+  delTask(task: Tasks) {
+    if (confirm("Vous êtes sur de vouloir supprimer cette tache?")) {
+      this.apiService.delTask(task)
+        .subscribe({
+          //next: (data) => console.log(data),
+          error: (err) => this.error = err.message,
+          complete: () => this.getAllTasks()
+        })
+    }
+  }
 }
 
-getAllTasks() {
-  this.apiService.getUserTasks().subscribe({
-    next: (data) => (this.tasks = data),
-    error: (err) => (this.error = err.message),
-    complete: () => (this.error = null),
-  });
-}
-
-getAllCategories() {
-  this.apiService.getCategories().subscribe({
-    next: (data) => (this.categories = data),
-    error: (err) => (this.error = err.message),
-    complete: () => (this.error = null),
-  });
-}
-
-getTaskById(id: number) {
-  this.apiService.getUserTask(id).subscribe({
-    next: (data) => (this.task = data),
-    error: (err) => (this.error = err.message),
-    complete: () => (this.error = null),
-  });
-}
-
- getCategoryById(id: number) {
-  this.apiService.getCategory(id).subscribe({
-    next: (data) => (this.category = data),
-    error: (err) => (this.error = err.message),
-    complete: () => (this.error = null),
-  });
-}
-
-openPopup() {
-  this.displayStyle = "block";
-  //this.displayBlur = "blur(4px)";
-}
-
-closePopup() {
-  this.displayStyle = "none";
-  this.displayBlur = "blur(0)"
-}
-
-}

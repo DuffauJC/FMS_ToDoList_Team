@@ -18,7 +18,7 @@ export class ApiService {
     }
 
     public getUserTasks() {
-      console.log("truc ----------" + this.http.get<any[]>(environment.host + "/task/all"))
+     // console.log("truc ----------" + this.http.get<any[]>(environment.host + "/task/all"))
         return this.http.get<any[]>(environment.host + "/task/all")
     }
 
@@ -44,5 +44,9 @@ export class ApiService {
         return this.http.post<Tasks>(environment.host + "/editTask", task)
     }
 
+
+    public delTask(task: Tasks) {
+        return this.http.delete(environment.host +"/task/deleteTask/"+task.id)
+    }
 
 }
