@@ -37,7 +37,7 @@ public class ApiToDoListApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		System.out.println("Salut");
-		//dataCreation();
+		dataCreation();
 		//dataCreation();
 	}
 
@@ -64,23 +64,23 @@ public class ApiToDoListApplication implements CommandLineRunner {
 		Category humanRessource = categoryRepository.save(new Category(null,"Humane Ressources"));
 		Category production = categoryRepository.save(new Category(null,"Production"));
 
-		Tasks Fake1 = taskRepository.save(new Tasks(null, "truc1",
-				new Date(), "Truc à test", true, formation));
-		Tasks Fake2 = taskRepository.save(new Tasks(null, "truc2",
-				new Date(), "Autre truc à test", true,formation));
-		Tasks Fake3 = taskRepository.save(new Tasks(null, "truc3",
-				new Date(), "encore autre truc", true,formation));
-		Tasks Fake4 = taskRepository.save(new Tasks(null, "truc4",
-				new Date(), "dernier truc à test", true,formation));
+//		Tasks Fake1 = taskRepository.save(new Tasks(null, "truc1",
+//				new Date(), "Truc à test", true, formation));
+//		Tasks Fake2 = taskRepository.save(new Tasks(null, "truc2",
+//				new Date(), "Autre truc à test", true,formation));
+//		Tasks Fake3 = taskRepository.save(new Tasks(null, "truc3",
+//				new Date(), "encore autre truc", true,formation));
+//		Tasks Fake4 = taskRepository.save(new Tasks(null, "truc4",
+//				new Date(), "dernier truc à test", true,formation));
 
-		/*
+
 		Tasks taskExemple0 = taskRepository.save(new Tasks(null, "exemple 0",
 				new Date(),"ce qui s'affiche sans user",
 				true,  formation, user1));
 		Tasks taskExemple1 = taskRepository.save(new Tasks(null, "exemple1",
 				new Date(), "premier essai", true, formation,user2));
 
-		Tasks taskExemple2 = taskRepository.save(new Tasks(null, "exemple2",
+			/*Tasks taskExemple2 = taskRepository.save(new Tasks(null, "exemple2",
 				new Date(), "second essai", true, marketing,user2));
 
 		Tasks taskExemple3 = taskRepository.save(new Tasks(null, "exemple3",

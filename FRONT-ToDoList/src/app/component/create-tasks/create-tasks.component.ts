@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from 'src/app/model/user.model';
 import { ApiService } from 'src/app/service/api.service';
 import { AuthenticateService } from 'src/app/service/authentificate.service';
 import { Category } from '../models/category.model';
 import { Tasks } from '../models/tasks.model';
+import { Users } from '../models/users.model';
 
 @Component({
   selector: 'app-create-tasks',
@@ -28,7 +28,7 @@ export class CreateTasksComponent implements OnInit {
     checked: false,
     // deleted: false,
     category: {} as Category,
-    user: {} as User
+    user: {} as Users
   };
 
   constructor(public apiService: ApiService, private router: Router, public authService: AuthenticateService) { 

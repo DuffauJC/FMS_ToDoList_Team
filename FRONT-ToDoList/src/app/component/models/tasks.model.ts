@@ -1,5 +1,5 @@
-import { User } from "src/app/model/user.model";
 import { Category } from "./category.model";
+import { Users } from "./users.model";
 
 export class Tasks {
   id: number;
@@ -9,7 +9,7 @@ export class Tasks {
   checked : boolean;
   // deleted: boolean;
   category : Category;
-  user : User;
+  user : Users;
 
   constructor(id: number,
     nameTask: String,
@@ -18,7 +18,7 @@ export class Tasks {
     checked : boolean,
     // deleted: boolean,
     category : Category,
-    user : User
+    user : Users
     ) {
     this.id = id;
     this.nameTask = nameTask;
