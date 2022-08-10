@@ -3,14 +3,13 @@
  */
 package fr.fms.business;
 
-;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.EntityManager;
 
-import fr.fms.entities.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
@@ -46,7 +45,8 @@ public class IBusinessImpl implements IBusiness {
 	
 	@Override
 	public List<Category> findAllCategoriesByUsers(Users users) throws Exception {
-		return categoryRepository.findAllByUsers(users);
+		//return categoryRepository.findAllByUsers(users);
+		return null;
 	}
 
 	@Override
@@ -82,7 +82,7 @@ public class IBusinessImpl implements IBusiness {
 	}
 
 	@Override
-	public Users getUserByMail(String mail) throws Exception {
+	public Optional<Users> getUserByMail(String mail) throws Exception {
 //		Users userReceived =
 //		Users user = new Users(userReceived.getId(), userReceived.getMail(), userReceived.getPassword(),
 //				userReceived.getActive());
@@ -93,7 +93,6 @@ public class IBusinessImpl implements IBusiness {
 
 	public Date parseDate(String date) {
 			return new Date("yyyy-MM-dd HH:mm:ss");
-
 	}
 
 	/**
@@ -102,6 +101,7 @@ public class IBusinessImpl implements IBusiness {
 	@Override
 	public List<Tasks> getTasks() {
 		return taskRepository.findAll();
+
 	}
 
 	/**
@@ -112,4 +112,8 @@ public class IBusinessImpl implements IBusiness {
 		return categoryRepository.findAll();
 	}
 
+	@Override
+    public List<Tasks> readTasksByDescriptionContains(String description) {
+		return taskRepository.findByDescriptionContains(description);
+    }
 }

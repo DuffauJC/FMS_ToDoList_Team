@@ -3,16 +3,16 @@ import { Category } from "./category.model";
 export class Tasks {
   id: number;
   nameTask: String;
-  dateTask: Date;
+  dateTask : Date;
   description : String;
   checked : boolean;
   deleted: boolean;
   category : Category;
-  //users : String;
+  //users : Users;
 
   constructor(id: number,
     nameTask: String,
-    dateTask: Date,
+    dateTask : Date,
     description : String,
     checked : boolean,
     deleted: boolean,

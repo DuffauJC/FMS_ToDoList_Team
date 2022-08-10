@@ -41,12 +41,10 @@ public class Users {
 	@NotNull
 	private String password;
 
-	@OneToMany(mappedBy = "users")
-	@JsonIgnore
+	@OneToMany(mappedBy = "users")@JsonIgnore
 	private Collection<Tasks> task;
 	
-	@OneToMany(mappedBy = "users")
-	@JsonIgnore
+	@OneToMany(mappedBy = "users")@JsonIgnore
 	private Collection<Category> category;
 	
 	@NotNull
@@ -82,13 +80,7 @@ public class Users {
 		this.active = active;
 	}
 
-	public Users(Long id, @NotNull String mail, @NotNull String password, @NotNull Boolean active, @NotNull List<Role> role) {
-		this.id = id;
-		this.mail = mail;
-		this.password = password;
-		this.active = active;
-		this.role = role;
-	}
+
 	
 	/**
 	 * @param id

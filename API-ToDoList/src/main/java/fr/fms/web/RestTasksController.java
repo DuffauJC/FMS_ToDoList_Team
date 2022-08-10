@@ -29,7 +29,6 @@ public class RestTasksController {
         iBusiness.deleteTask(id);
     }
 
-
     @GetMapping("/categorie")
     public List<Category> allCategories(){
         return iBusiness.getCategories();

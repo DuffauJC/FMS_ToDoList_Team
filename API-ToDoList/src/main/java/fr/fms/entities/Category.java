@@ -4,18 +4,16 @@
 package fr.fms.entities;
 
 import java.util.Collection;
+import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -35,12 +33,12 @@ public class Category {
 	@NotNull
 	@Size(min = 2, max = 50, message = "La taille doit être comprise entre 2 et 50 caractères.")
 	private String name;
-	
-	@OneToMany(mappedBy = "category")@JsonIgnore
-	private Collection<Tasks> tasks;
-	
-	@ManyToOne
-	private Users users;
+
+	@OneToMany(fetch = FetchType.EAGER)
+	@JsonIgnore
+	@JoinColumn(name = "category_id")
+	private List<Tasks> tasks;
+
 
 	/**
 	 * @param id

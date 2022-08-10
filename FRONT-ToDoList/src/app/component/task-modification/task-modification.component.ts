@@ -19,8 +19,7 @@ export class TaskModificationComponent implements OnInit {
     name: new FormControl('',[Validators.required]),
     description: new FormControl(),
     category: new FormControl(),
-    checked: new FormControl(),
-    date: new FormControl()
+    checked: new FormControl()
   })
 
   constructor(    private route: ActivatedRoute,

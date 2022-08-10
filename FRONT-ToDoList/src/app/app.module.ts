@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
     UserTasksComponent,
     LoginComponent,
     TaskModificationComponent
+
   ],
   imports: [
     BrowserModule,

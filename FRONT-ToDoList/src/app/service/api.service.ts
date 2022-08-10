@@ -12,19 +12,20 @@ import { Category } from '../component/models/category.model';
 
 export class ApiService {
     constructor(private http: HttpClient) { }
-    
-    //get usertask
-    public getUserTasks(): Observable<any[]> {
-        return this.http.get<Tasks[]>(environment.host + "/task/all")
-    }
 
     public saveTask(task : Tasks){
         return this.http.post<Tasks>(environment.host + "/task/saveTask", task);
     }
 
+    public getUserTasks() {
+      console.log("truc ----------" + this.http.get<any[]>(environment.host + "/task/all"))
+        return this.http.get<any[]>(environment.host + "/task/all")
+    }
+
+
     public login(data: any) {
-        console.log(data)
-        return this.http.post<any>(environment.host + "/login/", data.mail)
+       // console.log(data)
+        return this.http.get<any>(environment.host + "/api/login/"+ data.mail)
     }
     public getUserTask(id: number) {
         return this.http.get<Tasks>(environment.host + "/task" + id)

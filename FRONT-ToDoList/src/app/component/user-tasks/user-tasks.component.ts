@@ -51,7 +51,6 @@ this.getAllCategories();
 console.log(this.categories + "+++++++++++++++++++++++++++++++"+ this.tasks);
 }
 
-
 getAllTasks() {
   this.apiService.getUserTasks().subscribe({
     next: (data) => (this.tasks = data),
@@ -113,4 +112,5 @@ closePopup() {
   this.displayStyle = "none";
   this.displayBlur = "blur(0)"
 }
+
 }
