@@ -116,4 +116,10 @@ public class IBusinessImpl implements IBusiness {
     public List<Tasks> readTasksByDescriptionContains(String description) {
 		return taskRepository.findByDescriptionContains(description);
     }
+
+	@Override
+	public List<Tasks> readTasksByCatId(Long catId) {
+		System.out.println("+++++++"+catId);
+		return taskRepository.findByCategoryId(catId);
+	}
 }

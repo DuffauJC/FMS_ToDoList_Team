@@ -139,5 +139,14 @@ export class UserTasksComponent implements OnInit {
       });
   
     }
+
+    getTasksByCategory(catId:number){
+      console.log("clic");
+      this.apiService.getUserTasksByCatId(catId).subscribe({
+        next: (data) => this.tasks= data,
+        error: (err) => this.error=err.message,
+        complete: () => this.error =null
+      })
+    }
 }
 

@@ -49,6 +49,11 @@ public class TasksController {
         iBusiness.deleteTask(id);
 
     }
+
+    @GetMapping ("/category/{id}")
+    public List<Tasks> getTasksByCatId(@PathVariable("id") Long id){
+        return iBusiness.readTasksByCatId(id);
+    }
 }
 
 

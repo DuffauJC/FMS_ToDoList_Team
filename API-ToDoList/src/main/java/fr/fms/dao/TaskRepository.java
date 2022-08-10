@@ -23,4 +23,5 @@ public interface TaskRepository  extends JpaRepository<Tasks, Long> {
 
     List<Tasks> findAll();
 
+    List<Tasks> findByCategoryId(Long catId);
 }

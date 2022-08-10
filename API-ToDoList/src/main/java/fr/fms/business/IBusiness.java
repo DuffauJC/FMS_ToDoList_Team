@@ -91,4 +91,6 @@ public interface IBusiness {
 	public List<Category> getCategories();
 
     List<Tasks> readTasksByDescriptionContains(String string);
+
+    List<Tasks> readTasksByCatId(Long catId);
 }

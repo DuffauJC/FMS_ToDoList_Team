@@ -55,5 +55,10 @@ export class ApiService {
 
     }
 
+    public getUserTasksByCatId(id:number){
+        console.log(id);
+        return this.http.get<Tasks[]>(environment.host+"/task/category/"+id);
+    }
+
 }
 
