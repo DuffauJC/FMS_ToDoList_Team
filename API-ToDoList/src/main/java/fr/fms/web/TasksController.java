@@ -21,7 +21,6 @@ public class TasksController {
 
     @GetMapping("/all")
     public List<Tasks> allUserTasks(){
-        //System.out.println("task interrogé : --->" + iBusiness.getTasks());
         return iBusiness.getTasks();
     }
 
@@ -33,8 +32,19 @@ public class TasksController {
         }
         return null;
     }
+
+
+    @GetMapping("/research/{description}")
+    public List<Tasks> getTasksBySearch(@PathVariable("description") String description) {
+        List<Tasks> tasksBySearch = iBusiness.readTasksByDescriptionContains(description);
+        return tasksBySearch;
+    }
+
     @DeleteMapping("/deleteTask/{id}")
-    public void deleteTraining(@PathVariable("id")Long id) throws Exception {
+    public void deleteTraining(@PathVariable("id") Long id) throws Exception {
         iBusiness.deleteTask(id);
+
     }
 }
+
+
