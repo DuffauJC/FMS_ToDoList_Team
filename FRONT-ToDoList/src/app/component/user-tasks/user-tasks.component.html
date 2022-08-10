@@ -26,7 +26,7 @@
             <div class="row mt-3 mb-5">
 
                 <!--  exemple d'item  -->
-                <div *ngFor="let t of tasks | paginate: { itemsPerPage: 3, currentPage: pages }">
+                <div *ngFor="let t of tasks | paginate: { itemsPerPage: 5, currentPage: pages }">
                     <div class="d-flex flex-row justify-content-between">
                         <p>{{t.nameTask}}</p>
                         <p class="mb-0"> Catégorie : {{t.category.name}} </p>
