@@ -23,11 +23,20 @@
 .x-del {
     cursor: pointer;
     margin: 5px;
+    
+}
+.x-del:hover{
+   background-color: red;
+   
 }
 /* edition */
 .x-edit {
     cursor: pointer;
     margin: 5px;
+}
+.x-edit:hover{
+    border-radius: 100%;
+    background-color: black;
 }
 
 /*Variables CSS*/

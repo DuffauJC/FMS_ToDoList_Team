@@ -11,26 +11,28 @@ import { Tasks } from '../models/tasks.model';
 })
 export class UserTasksComponent implements OnInit {
 
-  categories : Category[]  =[];
-  tasks : Tasks[] =[];
-  category : Category | undefined;
-  task : Tasks | undefined;
+  categories: Category[] = [];
+  tasks: Tasks[] = [];
+  category: Category | undefined;
+  task: Tasks | undefined;
   error = null;
 
-  constructor(private apiService : ApiService) { }
+  constructor(private apiService: ApiService) { }
 
 
   ngOnInit(): void {
-    console.log(this.categories + "-----------------------------"+ this.tasks);
-  this.getAllTasks();
-this.getAllCategories();
-console.log(this.categories + "+++++++++++++++++++++++++++++++"+ this.tasks);
+   // console.log(this.categories + "-----------------------------" + this.tasks);
+    this.getAllTasks();
+    this.getAllCategories();
+    //console.log(this.categories + "+++++++++++++++++++++++++++++++" + this.tasks);
   }
 
 
   getAllTasks() {
     this.apiService.getUserTasks().subscribe({
-      next: (data) => (this.tasks=data, console.log("-------->" +data), this.tasks.forEach(t => console.log(t)) ),
+      next: (data) => (this.tasks = data
+        //console.log("-------->" + data), this.tasks.forEach(t => console.log(t))
+      ),
       error: (err) => (this.error = err.message),
       complete: () => (this.error = null),
     });
@@ -39,7 +41,9 @@ console.log(this.categories + "+++++++++++++++++++++++++++++++"+ this.tasks);
 
   getAllCategories() {
     this.apiService.getCategories().subscribe({
-      next: (data) => (this.categories = data, console.log("-------->" +data, this.categories.forEach(c => console.log(c)))),
+      next: (data) => (this.categories = data
+       // console.log("-------->" + data, this.categories.forEach(c => console.log(c)))
+      ),
       error: (err) => (this.error = err.message),
       complete: () => (this.error = null),
     });
@@ -53,7 +57,7 @@ console.log(this.categories + "+++++++++++++++++++++++++++++++"+ this.tasks);
     });
   }
 
-   getCategoryById(id: number) {
+  getCategoryById(id: number) {
     this.apiService.getCategory(id).subscribe({
       next: (data) => (this.category = data),
       error: (err) => (this.error = err.message),
@@ -61,4 +65,16 @@ console.log(this.categories + "+++++++++++++++++++++++++++++++"+ this.tasks);
     });
   }
 
+  // delete task
+  delTask(task:Tasks) {
+    if (confirm("Vous êtes sur de vouloir supprimer cette tache?")) {
+      this.apiService.delTask(task)
+        .subscribe({
+          //next: (data) => console.log(data),
+          error: (err) => this.error = err.message,
+          complete: () => this.getAllTasks()
+        })
+    }
+
+  }
 }

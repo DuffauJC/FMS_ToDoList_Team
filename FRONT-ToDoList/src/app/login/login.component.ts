@@ -35,12 +35,10 @@ export class LoginComponent implements OnInit {
       this.data.mail = form.value.mail
       this.data.password = form.value.password
 
-      console.log(this.data)
+     // console.log(this.data)
      
       let ok = this.authenticateService.veriFyLogin(this.data)
-      console.log(ok)
-
-      console.log(ok)
+      //console.log(ok)
       if (ok) {
           setTimeout(() => {
               this.error = false
