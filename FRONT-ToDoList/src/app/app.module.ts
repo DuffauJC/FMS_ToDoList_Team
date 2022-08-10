@@ -9,6 +9,7 @@ import { TaskModificationComponent } from './component/task-modification/task-mo
 import { UserTasksComponent } from './component/user-tasks/user-tasks.component';
 import { LoginComponent } from './login/login.component';
 import { CreateTasksComponent } from './component/create-tasks/create-tasks.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { CreateTasksComponent } from './component/create-tasks/create-tasks.comp
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
