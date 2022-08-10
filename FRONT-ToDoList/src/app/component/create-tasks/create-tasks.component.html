@@ -3,26 +3,26 @@
         <form [formGroup]="myForm" (ngSubmit)="onAddTask(myForm)">
             <div class="form-group">
                 <label class="control-label">Nom de la tâche : </label>
-                <input type="text" formControlName="nameTask" class="form-control">
+                <input type="text" formControlName="nameTask" class="form-control" required>
             </div>
 
             <div class="form-group">
                 <label class="control-label">Date de la tâche : </label>
-                <input type="date" formControlName="dateTask" class="form-control">
+                <input type="date" formControlName="dateTask" class="form-control" required>
             </div>
 
             <div class="form-group">
                 <label class="control-label">Description de la tâche : </label>
-                <input type="text" formControlName="description" class="form-control">
+                <input type="text" formControlName="description" class="form-control" required>
             </div>
 
             <div class="form-group">
                 <label class="control-label" for="formCategory">Categorie : </label>
-                <select id="formCategory" class="form-control" formControlName="category">
+                <select id="formCategory" class="form-control" formControlName="category" required>
                     <option *ngFor="let c of categories" [ngValue]="c">{{ c.name }}</option>
                 </select>
             </div>
-            <button type="submit" class="btn bgPastelLightGreen">Ajouter la formation</button>
+            <button type="submit" [disabled]="!myForm.valid" class="btn bgPastelLightGreen">Ajouter la formation</button>
         </form>
     </div>
 </div>

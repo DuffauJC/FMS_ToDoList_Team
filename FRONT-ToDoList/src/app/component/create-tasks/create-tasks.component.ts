@@ -78,6 +78,5 @@ export class CreateTasksComponent implements OnInit {
     }
 
     this.userTasks.closePopup();
-    this.router.navigateByUrl('userTasks');
   }
 }

@@ -56,6 +56,7 @@ export class UserTasksComponent implements OnInit {
      
     });
   }
+  
 
   ngOnInit(): void {
     // console.log(this.categories + "-----------------------------" + this.tasks);
@@ -63,6 +64,7 @@ export class UserTasksComponent implements OnInit {
     this.getAllCategories();
     //console.log(this.categories + "+++++++++++++++++++++++++++++++" + this.tasks);
   }
+
 
   getAllTasks() {
     this.apiService.getUserTasks().subscribe({
@@ -108,6 +110,9 @@ export class UserTasksComponent implements OnInit {
   closePopup() {
     this.displayStyle = "none";
     this.displayBlur = "blur(0)"
+    setTimeout(() => {
+      this.ngOnInit()
+    }, 1500)
   }
 
   // delete task
@@ -134,7 +139,5 @@ export class UserTasksComponent implements OnInit {
       });
   
     }
-
-
 }
 

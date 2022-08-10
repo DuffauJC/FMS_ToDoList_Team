@@ -1,21 +1,13 @@
 <nav class="navbar bg-pastel navbar-expand-sm">
   <div class="container-fluid">
 
-
     <div class="collapse navbar-collapse justify-content-between" id="navbarTogglerDemo01">
       <a class="navbar-brand" aria-current="page" routerLink="/home">Toute Douce Liste</a>
       <ul class="nav navbar-nav" *ngIf="logout">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/editTasks">Gérer mes tâches</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" routerLink="/userTasks" active>Visualiser mes tâches</a>
         </li>
       </ul>
-      <!-- search -->
-
-
-      
       <div *ngIf="display" class="col-md-4 welcome">
         Bienvenue {{name}} <img src="/assets/img/robot.png">
       </div>
