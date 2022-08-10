@@ -7,6 +7,7 @@ import { UserTasksComponent } from './component/user-tasks/user-tasks.component'
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticateService } from './service/authentificate.service';
+import { FormControl, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -16,10 +17,6 @@ import { AuthenticateService } from './service/authentificate.service';
 })
 export class AppComponent implements OnInit, DoCheck {
   title = 'FRONT-ToDoList';
-
-
-  tasks : Tasks[] =[];
-  task : Tasks | undefined;
   error = null;
 
   
@@ -30,37 +27,13 @@ export class AppComponent implements OnInit, DoCheck {
   display = false
 
   
-  constructor(private authenticateService: AuthenticateService, private router: Router, private apiService : ApiService) {
+  constructor(private authenticateService: AuthenticateService, private router: Router, private apiService : ApiService) { }
 
-  }
 
   ngOnInit(): void {
-  this.getAllTasks();
   this.showName();
 
   }
-
-  getAllTasks() {
-    this.apiService.getUserTasks().subscribe({
-      next: (data) => (this.tasks=data, console.log("-------->" +data), this.tasks.forEach(t => console.log(t)) ),
-      error: (err) => (this.error = err.message),
-      complete: () => (this.error = null),
-    });
-
-  }
-
-  onSearch(){
-      this.apiService.getTasksBySearch(description).subscribe({
-        next: (data) => (this.tasks=data,
-           console.log("++++++++++" +data), this.tasks.forEach(t => console.log(t)) 
-           ),
-        error: (err) => (this.error = err.message),
-        complete: () => (this.error = null),
-      });
-  
-    }
-  
-
 
 
   ngDoCheck(): void {

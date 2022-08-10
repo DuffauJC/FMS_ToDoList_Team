@@ -47,7 +47,7 @@ export class ApiService {
 
 
     public getTasksBySearch(description: String){
-        return this.http.get<Tasks[]>(environment.host + "/api/research/"+ description)
+        return this.http.get<Tasks[]>(environment.host + "/task/research/"+ description)
     }
 
     public delTask(task: Tasks) {

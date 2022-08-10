@@ -1,4 +1,15 @@
 <div class="container" [ngStyle]="{'filter':displayBlur}">
+<div class="row">
+    <form class="d-flex mt-3 mb-3 col-4 " role="search" [formGroup]="searchForm" (ngSubmit)="onSearch(searchForm)">
+
+        <input class="form-control me-2" type="search" name="keyword" placeholder="Rechercher" aria-label="Search"
+          formControlName="newSearch">
+        <button class="btn btn-outline-success" type="submit">
+          <i class="bi bi-search-heart"></i>
+        </button>
+      </form>
+</div>
+    
 
     <div class="row">
         <div class="d-flex flex-column col-4">
