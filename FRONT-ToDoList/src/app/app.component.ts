@@ -17,24 +17,17 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class AppComponent implements OnInit, DoCheck {
   title = 'FRONT-ToDoList';
-  error = null;
 
-  
-  userNotOk=false
   name = ""
   loggin = true
   logout = false
   display = false
 
-  
   constructor(private authenticateService: AuthenticateService, private router: Router, private apiService : ApiService) { }
-
 
   ngOnInit(): void {
   this.showName();
-
   }
-
 
   ngDoCheck(): void {
     this.showName()
@@ -57,7 +50,6 @@ export class AppComponent implements OnInit, DoCheck {
     this.logout = false
     this.router.navigateByUrl('home')
   }
-
 
 }
 
