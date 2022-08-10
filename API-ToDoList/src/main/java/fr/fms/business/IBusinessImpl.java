@@ -93,7 +93,6 @@ public class IBusinessImpl implements IBusiness {
 
 	public Date parseDate(String date) {
 			return new Date("yyyy-MM-dd HH:mm:ss");
-
 	}
 
 	/**
@@ -101,7 +100,6 @@ public class IBusinessImpl implements IBusiness {
 	 */
 	@Override
 	public List<Tasks> getTasks() {
-System.out.println(taskRepository.findAll());
 		return taskRepository.findAll();
 
 	}
@@ -114,4 +112,8 @@ System.out.println(taskRepository.findAll());
 		return categoryRepository.findAll();
 	}
 
+	@Override
+    public List<Tasks> readTasksByDescriptionContains(String description) {
+		return taskRepository.findByDescriptionContains(description);
+    }
 }

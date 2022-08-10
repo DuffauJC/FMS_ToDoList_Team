@@ -48,11 +48,10 @@ public class Tasks {
 
 	private boolean checked;
 
-
-//	@ManyToOne
-//	private Category category;
-
-	private String category;
+	@ManyToOne
+	private Category category;
+//
+//	private String category;
 //	@ManyToOne
 //	private Users users;
 

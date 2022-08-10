@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { Category } from '../models/category.model';
 import { Tasks } from '../models/tasks.model';
-
 
 @Component({
   selector: 'app-user-tasks',
@@ -17,16 +18,42 @@ export class UserTasksComponent implements OnInit {
   task: Tasks | undefined;
   error = null;
 
-  constructor(private apiService: ApiService) { }
+  myForm: FormGroup;
 
+
+  //modal add article
+  displayStyle = "none";
+  displayBlur = "blur(0)"
+  display = false
+
+  newTask = {
+    id: 0,
+    nameTask: "",
+    dateTask: new Date(),
+    description: "",
+    checked: false,
+    deleted: false,
+    category: {} as Category
+  };
+
+
+  constructor(public apiService: ApiService, private router: Router) {
+    this.myForm = new FormGroup({
+      nameTask: new FormControl(this.newTask.nameTask),
+      dateTask: new FormControl(this.newTask.dateTask),
+      description: new FormControl(this.newTask.description),
+      checked: new FormControl(this.newTask.checked),
+      deleted: new FormControl(this.newTask.deleted),
+      category: new FormControl(this.newTask.category)
+    });
+  }
 
   ngOnInit(): void {
-   // console.log(this.categories + "-----------------------------" + this.tasks);
+    // console.log(this.categories + "-----------------------------" + this.tasks);
     this.getAllTasks();
     this.getAllCategories();
     //console.log(this.categories + "+++++++++++++++++++++++++++++++" + this.tasks);
   }
-
 
   getAllTasks() {
     this.apiService.getUserTasks().subscribe({
@@ -36,22 +63,21 @@ export class UserTasksComponent implements OnInit {
       error: (err) => (this.error = err.message),
       complete: () => (this.error = null),
     });
-
   }
-
-  getAllCategories() {
-    this.apiService.getCategories().subscribe({
-      next: (data) => (this.categories = data
-       // console.log("-------->" + data, this.categories.forEach(c => console.log(c)))
-      ),
+  getTaskById(id: number) {
+    this.apiService.getUserTask(id).subscribe({
+      next: (data) => (this.task = data),
       error: (err) => (this.error = err.message),
       complete: () => (this.error = null),
     });
   }
 
-  getTaskById(id: number) {
-    this.apiService.getUserTask(id).subscribe({
-      next: (data) => (this.task = data),
+
+  getAllCategories() {
+    this.apiService.getCategories().subscribe({
+      next: (data) => (this.categories = data
+        // console.log("-------->" + data, this.categories.forEach(c => console.log(c)))
+      ),
       error: (err) => (this.error = err.message),
       complete: () => (this.error = null),
     });
@@ -65,8 +91,18 @@ export class UserTasksComponent implements OnInit {
     });
   }
 
+  openPopup() {
+    this.displayStyle = "block";
+    //this.displayBlur = "blur(4px)";
+  }
+
+  closePopup() {
+    this.displayStyle = "none";
+    this.displayBlur = "blur(0)"
+  }
+
   // delete task
-  delTask(task:Tasks) {
+  delTask(task: Tasks) {
     if (confirm("Vous êtes sur de vouloir supprimer cette tache?")) {
       this.apiService.delTask(task)
         .subscribe({
@@ -75,6 +111,6 @@ export class UserTasksComponent implements OnInit {
           complete: () => this.getAllTasks()
         })
     }
-
   }
 }
+

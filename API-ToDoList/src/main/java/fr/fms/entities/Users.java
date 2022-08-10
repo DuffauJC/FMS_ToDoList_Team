@@ -41,7 +41,11 @@ public class Users {
 	@NotNull
 	private String password;
 
-
+	@OneToMany(mappedBy = "users")@JsonIgnore
+	private Collection<Tasks> task;
+	
+	@OneToMany(mappedBy = "users")@JsonIgnore
+	private Collection<Category> category;
 	
 	@NotNull
 	private Boolean active;
