@@ -66,6 +66,16 @@ public class Users {
 		this.mail = mail;
 		this.password = password;
 	}
+	/**
+	 * @param id
+	 * @param mail
+	 * @param active
+	 */
+	public Users(Long id, String mail, @NotNull Boolean active) {
+		this.id = id;
+		this.mail = mail;
+		this.active = active;
+	}
 	
 	/**
 	 * @param id

@@ -6,6 +6,7 @@ import { AuthenticateService } from 'src/app/service/authentificate.service';
 import { Category } from '../models/category.model';
 import { Tasks } from '../models/tasks.model';
 import { Users } from '../models/users.model';
+import { UserTasksComponent } from '../user-tasks/user-tasks.component';
 
 @Component({
   selector: 'app-create-tasks',
@@ -28,17 +29,18 @@ export class CreateTasksComponent implements OnInit {
     checked: false,
     // deleted: false,
     category: {} as Category,
-    user: {} as Users
+    users: {} as Users
   };
 
-  constructor(public apiService: ApiService, private router: Router, public authService: AuthenticateService) { 
+  constructor(public apiService: ApiService, private router: Router, public authService: AuthenticateService, public userTasks : UserTasksComponent) { 
     this.myForm = new FormGroup({
       nameTask: new FormControl(this.newTask.nameTask),
       dateTask: new FormControl(this.newTask.dateTask),
       description: new FormControl(this.newTask.description),
-      //checked: new FormControl(this.newTask.checked),
+      checked: new FormControl(false),
       // deleted: new FormControl(this.newTask.deleted),
-      category: new FormControl(this.newTask.category)
+      category: new FormControl(this.newTask.category),
+      //users: new FormControl(this.newTask.user)
     });
   }
 
@@ -61,9 +63,10 @@ export class CreateTasksComponent implements OnInit {
     this.newTask.checked = false;
     // this.newTask.deleted = false;
     this.newTask.category = form.value.category
-    this.newTask.user = this.authService.getUserFromStorage();
+    this.newTask.users = this.authService.getUserFromStorage();
+
     console.log(typeof this.authService.getUserFromStorage())
-    console.log("user : " + this.authService.getUserFromStorage())
+    console.log(this.authService.getUserFromStorage())
     console.log(this.newTask)
     
     if(confirm("Valider l'ajout de la formation ?")){
@@ -73,5 +76,8 @@ export class CreateTasksComponent implements OnInit {
         complete: () => this.error = null
        })
     }
+
+    this.userTasks.closePopup();
+    this.router.navigateByUrl('userTasks');
   }
 }

@@ -3,22 +3,22 @@ import { Users } from "./users.model";
 
 export class Tasks {
   id: number;
-  nameTask: String;
+  nameTask: string;
   dateTask : Date;
-  description : String;
+  description : string;
   checked : boolean;
   // deleted: boolean;
   category : Category;
-  user : Users;
+  users : Users;
 
   constructor(id: number,
-    nameTask: String,
+    nameTask: string,
     dateTask : Date,
-    description : String,
+    description : string,
     checked : boolean,
     // deleted: boolean,
     category : Category,
-    user : Users
+    users : Users
     ) {
     this.id = id;
     this.nameTask = nameTask;
@@ -27,7 +27,7 @@ export class Tasks {
     this.checked = checked;
     // this.deleted = deleted;
     this.category = category;
-    this.user = user;
+    this.users = users;
   }
 
 }
