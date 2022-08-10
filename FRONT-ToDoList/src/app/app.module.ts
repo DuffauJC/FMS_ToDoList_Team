@@ -5,10 +5,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TaskModificationComponent } from './component/task-modification/task-modification.component';
 import { UserTasksComponent } from './component/user-tasks/user-tasks.component';
 import { LoginComponent } from './login/login.component';
 import { CreateTasksComponent } from './component/create-tasks/create-tasks.component';
+import { EditTaskComponent } from './component/edit-task/edit-task.component';
+
 
 
 @NgModule({
@@ -16,8 +17,8 @@ import { CreateTasksComponent } from './component/create-tasks/create-tasks.comp
     AppComponent,
     UserTasksComponent,
     LoginComponent,
-    TaskModificationComponent,
-    CreateTasksComponent
+    CreateTasksComponent,
+    EditTaskComponent
 
   ],
   imports: [
