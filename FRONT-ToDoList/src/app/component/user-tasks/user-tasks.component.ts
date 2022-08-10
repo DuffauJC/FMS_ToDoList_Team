@@ -150,7 +150,6 @@ export class UserTasksComponent implements OnInit {
         error: (err) => (this.error = err.message),
         complete: () => (this.error = null),
       });
-
-    }
+  }
 }
 
