@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 //package fr.fms;
 //
 //import static org.assertj.core.api.Assertions.assertThat;
@@ -26,6 +27,95 @@
 //		assertFalse(1 == 2);
 //	}
 //
+=======
+package fr.fms;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
+import java.time.LocalDate;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+
+import fr.fms.business.IBusinessImpl;
+import fr.fms.entities.Tasks;
+import fr.fms.entities.Users;
+
+@SpringBootTest
+class ToDoListSpringApplicationTests {
+	
+	@Autowired
+	IBusinessImpl business;
+
+	@Test
+	void contextLoads() {
+		assertFalse(1 == 2);
+	}
+
+	@Test
+	void testAddTask() {
+
+	}
+	
+	@Test
+	void testReadCategories() {
+		try {
+			assertThat(business.readCategoryById((long) 1)).isNotNull();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	void testEqualUser() {
+		try {
+			assertEquals((long) 2, business.getUserByMail("saralune@mail.fr").getId());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	void testGetArticle() {
+		try {
+			assertThat(business.readTasksById((long) 12)).isNotNull();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	void testGetArticleDeleted() {
+		try {
+			assertThat(business.readTasksById((long) 3)).isNull();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	void testCountCategories() {
+		try {
+			assertEquals(business.findAllCategoriesByUsers(business.getUserByMail("test@test.fr")).size(), 1);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	void testFindCategoriesByUsers() {
+		try {
+			assertEquals(business.findAllCategoriesByUsers(business.getUserByMail("test@test.fr")).size(), 1);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+>>>>>>> Stashed changes
 //	@Test
 //	void testAddTask() {
 //		try {

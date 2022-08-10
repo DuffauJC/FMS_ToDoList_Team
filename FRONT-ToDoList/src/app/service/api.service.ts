@@ -16,7 +16,8 @@ export class ApiService {
 
     //get usertask
     public getUserTasks() {
-        return this.http.get<Tasks[]>(environment.host + "/task/all")
+      console.log("truc ----------" + this.http.get<any[]>(environment.host + "/task/all"))
+        return this.http.get<any[]>(environment.host + "/task/all")
     }
 
     public login(data: any) {

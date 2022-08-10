@@ -30,15 +30,16 @@ console.log(this.categories + "+++++++++++++++++++++++++++++++"+ this.tasks);
 
   getAllTasks() {
     this.apiService.getUserTasks().subscribe({
-      next: (data) => (this.tasks = data),
+      next: (data) => (this.tasks=data, console.log("-------->" +data), this.tasks.forEach(t => console.log(t)) ),
       error: (err) => (this.error = err.message),
       complete: () => (this.error = null),
     });
+
   }
 
   getAllCategories() {
     this.apiService.getCategories().subscribe({
-      next: (data) => (this.categories = data),
+      next: (data) => (this.categories = data, console.log("-------->" +data, this.categories.forEach(c => console.log(c)))),
       error: (err) => (this.error = err.message),
       complete: () => (this.error = null),
     });
