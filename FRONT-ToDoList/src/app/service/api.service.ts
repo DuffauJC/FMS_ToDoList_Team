@@ -5,7 +5,6 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Tasks } from '../component/models/tasks.model';
 import { Category } from '../component/models/category.model';
-
 // import { Category } from '../model/category.model';
 
 
@@ -14,11 +13,15 @@ import { Category } from '../component/models/category.model';
 export class ApiService {
     constructor(private http: HttpClient) { }
 
-    //get usertask
+    public saveTask(task : Tasks){
+        return this.http.post<Tasks>(environment.host + "/task/saveTask", task);
+    }
+
     public getUserTasks() {
-      console.log("truc ----------" + this.http.get<any[]>(environment.host + "/task/all"))
+     // console.log("truc ----------" + this.http.get<any[]>(environment.host + "/task/all"))
         return this.http.get<any[]>(environment.host + "/task/all")
     }
+
 
     public login(data: any) {
        // console.log(data)
@@ -36,16 +39,21 @@ export class ApiService {
         return this.http.get<Category>(environment.host + "/category" + id)
     }
 
-
-
     public editTask(task: Tasks) {
 
         return this.http.post<Tasks>(environment.host + "/editTask", task)
     }
 
 
+
     public getTasksBySearch(description: String){
         return this.http.get<Tasks[]>(environment.host + "/api/research/"+ description)
     }
 
+    public delTask(task: Tasks) {
+        return this.http.delete(environment.host +"/task/deleteTask/"+task.id)
+
+    }
+
 }
+
