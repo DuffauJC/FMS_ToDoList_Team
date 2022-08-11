@@ -55,5 +55,14 @@ export class AuthenticateService {
     }
     removeUserFromStorage() {
         localStorage.removeItem('user')
+        localStorage.removeItem('accessToken')
     }
+
+    getToken() {
+        let token = localStorage.getItem('accessToken')
+        if (token) return token
+        return null
+    }
+
+
 }

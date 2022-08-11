@@ -5,28 +5,35 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Tasks } from '../component/models/tasks.model';
 import { Category } from '../component/models/category.model';
-// import { Category } from '../model/category.model';
+
 
 
 @Injectable({ providedIn: 'root' })
 
 export class ApiService {
+
+    headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem("accessToken")}`
+    })
+
     constructor(private http: HttpClient) { }
 
-    public saveTask(task : Tasks){
-        return this.http.post<Tasks>(environment.host + "/task/saveTask", task);
+    public saveTask(task: Tasks) {
+        return this.http.post<Tasks>(environment.host + "/task/saveTask", task, { headers: this.headers });
     }
 
     public getUserTasks() {
-     // console.log("truc ----------" + this.http.get<any[]>(environment.host + "/task/all"))
-        return this.http.get<any[]>(environment.host + "/task/all")
+        return this.http.get<any[]>(environment.host + "/task/all", { headers: this.headers })
     }
 
 
     public login(data: any) {
-       // console.log(data)
+        // console.log(data)
         return this.http.post<any>(environment.host + "/api/auth/signin", data)
     }
+
+    // non utilisé
     public getUserTask(id: number) {
         return this.http.get<Tasks>(environment.host + "/task" + id)
     }
@@ -35,29 +42,26 @@ export class ApiService {
         return this.http.get<Category[]>(environment.host + "/category/all")
     }
 
-    public getCategory(id: number) {
-        return this.http.get<Category>(environment.host + "/category" + id)
-    }
+    // non utilisé
+    // public getCategory(id: number) {
+    //     return this.http.get<Category>(environment.host + "/category" + id)
+    // }
 
     public editTask(task: Tasks) {
-
-        return this.http.post<Tasks>(environment.host + "/editTask", task)
+        return this.http.post<Tasks>(environment.host + "/editTask", task, { headers: this.headers })
     }
 
-
-
-    public getTasksBySearch(description: String){
-        return this.http.get<Tasks[]>(environment.host + "/task/research/"+ description)
+    public getTasksBySearch(description: String) {
+        return this.http.get<Tasks[]>(environment.host + "/task/research/" + description)
     }
 
     public delTask(task: Tasks) {
-        return this.http.delete(environment.host +"/task/deleteTask/"+task.id)
-
+        return this.http.delete(environment.host + "/task/deleteTask/" + task.id, { headers: this.headers })
     }
 
-    public getUserTasksByCatId(id:number){
-        console.log(id);
-        return this.http.get<Tasks[]>(environment.host+"/task/category/"+id);
+    public getUserTasksByCatId(id: number) {
+       //console.log(id);
+        return this.http.get<Tasks[]>(environment.host + "/task/category/" + id, { headers: this.headers });
     }
 
 }

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Component, DoCheck, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
+import { AuthenticateService } from 'src/app/service/authentificate.service';
 import { Category } from '../models/category.model';
 import { Tasks } from '../models/tasks.model';
 
@@ -10,7 +11,7 @@ import { Tasks } from '../models/tasks.model';
   templateUrl: './user-tasks.component.html',
   styleUrls: ['./user-tasks.component.css']
 })
-export class UserTasksComponent implements OnInit {
+export class UserTasksComponent implements OnInit,DoCheck {
 
   categories: Category[] = [];
   tasks: Tasks[] = [];
@@ -23,7 +24,7 @@ export class UserTasksComponent implements OnInit {
   myForm: FormGroup;
   newSearch = "";
   researchTasks: Tasks[] = [];
-
+  name = ""
   // pagination
   pages: number = 1
 
@@ -43,7 +44,7 @@ export class UserTasksComponent implements OnInit {
   };
 
 
-  constructor(public apiService: ApiService, private router: Router) {
+  constructor(public apiService: ApiService, private router: Router, private authenticateService: AuthenticateService) {
     this.myForm = new FormGroup({
       nameTask: new FormControl(this.newTask.nameTask),
       dateTask: new FormControl(this.newTask.dateTask),
@@ -57,12 +58,16 @@ export class UserTasksComponent implements OnInit {
 
     });
   }
+  ngDoCheck(): void {
+    this.isAuthenticated()
+  }
 
 
   ngOnInit(): void {
     // console.log(this.categories + "-----------------------------" + this.tasks);
     this.getAllTasks();
     this.getAllCategories();
+    this.isAuthenticated()
     //console.log(this.categories + "+++++++++++++++++++++++++++++++" + this.tasks);
   }
 
@@ -76,28 +81,12 @@ export class UserTasksComponent implements OnInit {
       complete: () => (this.error = null),
     });
   }
-  getTaskById(id: number) {
-    this.apiService.getUserTask(id).subscribe({
-      next: (data) => (this.task = data),
-      error: (err) => (this.error = err.message),
-      complete: () => (this.error = null),
-    });
-  }
-
 
   getAllCategories() {
     this.apiService.getCategories().subscribe({
       next: (data) => (this.categories = data
         // console.log("-------->" + data, this.categories.forEach(c => console.log(c)))
       ),
-      error: (err) => (this.error = err.message),
-      complete: () => (this.error = null),
-    });
-  }
-
-  getCategoryById(id: number) {
-    this.apiService.getCategory(id).subscribe({
-      next: (data) => (this.category = data),
       error: (err) => (this.error = err.message),
       complete: () => (this.error = null),
     });
@@ -142,7 +131,7 @@ export class UserTasksComponent implements OnInit {
   }
 
   onSearch(form: FormGroup) {
-    console.log(form.value);
+    //console.log(form.value);
     this.apiService.getTasksBySearch(form.value.newSearch).subscribe({
       next: (data) => (this.tasks = data,
         console.log("++++++++++" + data),
@@ -156,7 +145,7 @@ export class UserTasksComponent implements OnInit {
   }
 
   getTasksByCategory(catId: number) {
-    console.log("clic");
+    //console.log("clic");
     this.apiService.getUserTasksByCatId(catId).subscribe({
       next: (data) => this.tasks = data,
       error: (err) => this.error = err.message,
@@ -164,6 +153,21 @@ export class UserTasksComponent implements OnInit {
     })
   }
 
+
+  // token ou pas (si pas token redirect not found)
+  isAuthenticated() {
+    let rep = this.authenticateService.getToken()
+    if (rep == null) {
+     this.router.navigateByUrl('403')
+    }
+  }
+  showName() {
+    let rep = this.authenticateService.getUserFromStorage()
+    if (rep != null) {
+      this.name = rep.username
+    
+    }
+  }
 }
 
 

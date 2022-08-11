@@ -5,7 +5,6 @@ import { ApiService } from 'src/app/service/api.service';
 import { AuthenticateService } from 'src/app/service/authentificate.service';
 import { Category } from '../models/category.model';
 import { Tasks } from '../models/tasks.model';
-import { Users } from '../models/users.model';
 import { UserTasksComponent } from '../user-tasks/user-tasks.component';
 
 @Component({
@@ -29,7 +28,7 @@ export class EditTaskComponent implements OnInit {
       nameTask: new FormControl(this.taskToEdit.nameTask),
       dateTask: new FormControl(this.taskToEdit.dateTask),
       description: new FormControl(this.taskToEdit.description),
-      checked: new FormControl(false),
+      checked: new FormControl(this.taskToEdit.checked),
       // deleted: new FormControl(this.newTask.deleted),
       category: new FormControl(this.taskToEdit.category),
       //users: new FormControl(this.newTask.user)
@@ -53,11 +52,11 @@ export class EditTaskComponent implements OnInit {
     this.taskToEdit.nameTask = form.value.nameTask
     this.taskToEdit.dateTask = form.value.dateTask
     this.taskToEdit.description = form.value.description
-    this.taskToEdit.checked = false
+    this.taskToEdit.checked = form.value.checked
     this.taskToEdit.category = form.value.category
     this.taskToEdit.users = this.authService.getUserFromStorage();
 
-    if(confirm("Valider l'ajout de la formation ?")){
+    if(confirm("Valider la modification ?")){
       this.apiService.saveTask(this.taskToEdit).subscribe({
         next: (data) => console.log(data),
         error: (err) => this.error = err.message,

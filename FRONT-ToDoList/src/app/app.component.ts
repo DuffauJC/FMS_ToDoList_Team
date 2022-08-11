@@ -23,20 +23,21 @@ export class AppComponent implements OnInit, DoCheck {
   logout = false
   display = false
 
-  constructor(private authenticateService: AuthenticateService, private router: Router, private apiService : ApiService) { }
+  constructor(private authenticateService: AuthenticateService, private router: Router, private apiService: ApiService) { }
 
   ngOnInit(): void {
-  this.showName();
+    this.showName();
+    this.isAuthenticated()
   }
 
   ngDoCheck(): void {
     this.showName()
-
+    
   }
   showName() {
     let rep = this.authenticateService.getUserFromStorage()
     if (rep != null) {
-      this.name=rep.mail
+      this.name = rep.username
       this.display = true
       this.loggin = false
       this.logout = true
@@ -50,6 +51,12 @@ export class AppComponent implements OnInit, DoCheck {
     this.logout = false
     this.router.navigateByUrl('home')
   }
-
+  // token ou pas (si pas token redirect not found)
+  isAuthenticated() {
+    let rep = this.authenticateService.getToken()
+    if (rep == null) {
+      this.router.navigateByUrl('403')
+    }
+  }
 }
 

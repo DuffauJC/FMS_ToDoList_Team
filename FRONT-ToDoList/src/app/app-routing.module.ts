@@ -12,8 +12,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'editTask', component: EditTaskComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: '404', component: NotFoundComponent },
-  { path: '**', redirectTo: '/404' }
+  { path: '403', component: NotFoundComponent },
+  { path: '**', redirectTo: '/403' }
 ];
 
 @NgModule({

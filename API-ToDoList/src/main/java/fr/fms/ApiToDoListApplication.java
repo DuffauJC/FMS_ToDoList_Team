@@ -43,8 +43,8 @@ public class ApiToDoListApplication implements CommandLineRunner {
 
 	public void dataCreation(){
 
-		Role admin = roleRepository.save(new Role(null, "ADMIN"));
-		Role user = roleRepository.save(new Role(null, "USER"));
+//		Role admin = roleRepository.save(new Role(null, "ADMIN"));
+//		Role user = roleRepository.save(new Role(null, "USER"));
 
 //		Users user0 = usersRepository
 //				.save(new Users(null, "c.lozzi@fms.com", "fms2022",  true ));

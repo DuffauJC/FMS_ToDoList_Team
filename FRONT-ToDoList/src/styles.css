@@ -19,6 +19,9 @@
         0 -10px 20px #ff8000,
         0 -18px 40px #F00;
 }
+.welcome img{
+    margin-left: 40px;
+}
 /*  img suppression */
 .x-del {
     cursor: pointer;

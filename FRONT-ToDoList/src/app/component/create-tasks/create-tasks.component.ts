@@ -69,7 +69,7 @@ export class CreateTasksComponent implements OnInit {
     console.log(this.authService.getUserFromStorage())
     console.log(this.newTask)
     
-    if(confirm("Valider l'ajout de la formation ?")){
+    if(confirm("Valider l'ajout de la tache ?")){
       this.apiService.saveTask(this.newTask).subscribe({
         next: (data) => console.log("data " + data),
         error: (err) => this.error = err.message,
