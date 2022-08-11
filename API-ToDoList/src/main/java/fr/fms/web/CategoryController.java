@@ -22,6 +22,8 @@ public class CategoryController {
 
     @GetMapping("/all")
     public List<Category> allCategories(){
+
+        System.out.println("okkkkkk");
         return iBusiness.getCategories();
     }
 

@@ -57,48 +57,60 @@ public class ApiToDoListApplication implements CommandLineRunner {
 		Users user4 = usersRepository
 				.save(new Users(null, "m.derand@fms.com", "fms2022",  true));
 
-		Category administratif = categoryRepository.save(new Category(null,"Administratif",null,null));
-		Category comptability = categoryRepository.save(new Category(null,"Comptability",null,null));
-		Category formation = categoryRepository.save(new Category(null,"Formation",null,null));
-		Category marketing = categoryRepository.save(new Category(null,"Marketing",null,null));
-		Category humanRessource = categoryRepository.save(new Category(null,"Humane Ressources",null,null));
-		Category production = categoryRepository.save(new Category(null,"Production",null,null));
+		Category administratif = categoryRepository.save(new Category(null,"Administratif"));
+		Category comptability = categoryRepository.save(new Category(null,"Comptability"));
+		Category formation = categoryRepository.save(new Category(null,"Formation"));
+		Category marketing = categoryRepository.save(new Category(null,"Marketing"));
+		Category humanRessource = categoryRepository.save(new Category(null,"Humane Ressources"));
+		Category production = categoryRepository.save(new Category(null,"Production"));
+
+//		Tasks Fake1 = taskRepository.save(new Tasks(null, "truc1",
+//				new Date(), "Truc à test", true, formation));
+//		Tasks Fake2 = taskRepository.save(new Tasks(null, "truc2",
+//				new Date(), "Autre truc à test", true,formation));
+//		Tasks Fake3 = taskRepository.save(new Tasks(null, "truc3",
+//				new Date(), "encore autre truc", true,formation));
+//		Tasks Fake4 = taskRepository.save(new Tasks(null, "truc4",
+//				new Date(), "dernier truc à test", true,formation));
+
 
 		Tasks taskExemple0 = taskRepository.save(new Tasks(null, "exemple 0",
 				new Date(),"ce qui s'affiche sans user",
-				true, false, formation, user1));
+				true,  formation, user1));
 		Tasks taskExemple1 = taskRepository.save(new Tasks(null, "exemple1",
-				new Date(), "premier essai", true,false, formation,user2));
+				new Date(), "premier essai", true, formation,user2));
 
-		Tasks taskExemple2 = taskRepository.save(new Tasks(null, "exemple2",
-				new Date(), "second essai", true,false, marketing,user2));
+			/*Tasks taskExemple2 = taskRepository.save(new Tasks(null, "exemple2",
+				new Date(), "second essai", true, marketing,user2));
 
 		Tasks taskExemple3 = taskRepository.save(new Tasks(null, "exemple3",
-				new Date(), "troisieme essai", true,false, marketing,user2));
+				new Date(), "troisieme essai", true, marketing,user2));
 
 		Tasks taskExemple4 = taskRepository.save(new Tasks(null, "exemple4",
-				new Date(), "quatrieme essai", true,false, comptability,user2));
+				new Date(), "quatrieme essai", true, comptability,user2));
 
 		Tasks taskExemple5 = taskRepository.save(new Tasks(null, "exemple5",
-				new Date(), "cinquieme essai", true,false, administratif,user2));
+				new Date(), "cinquieme essai", true, administratif,user2));
 
 		Tasks taskExemple6 = taskRepository.save(new Tasks(null, "exemple6",
-				new Date(), "sixieme essai", true,false, humanRessource,user2));
+				new Date(), "sixieme essai", true, humanRessource,user2));
 
 		Tasks taskExemple7 = taskRepository.save(new Tasks(null, "exemple7",
-				new Date(), "septieme essai", true,false, marketing,user2));
+				new Date(), "septieme essai", true, marketing,user2));
 
 		Tasks taskExemple8 = taskRepository.save(new Tasks(null, "exemple8",
-				new Date(), "huitieme essai", true,false, production,user3));
+				new Date(), "huitieme essai", true, production,user3));
 
 		Tasks taskExemple9 = taskRepository.save(new Tasks(null, "exemple9",
-				new Date(), "neuvieme essai", true,false, administratif,user1));
+				new Date(), "neuvieme essai", true, administratif,user1));
 
 		Tasks taskExemple10 = taskRepository.save(new Tasks(null, "exemple10",
-				new Date(), "dixieme essai", true,false, production,user3));
+				new Date(), "dixieme essai", true, production,user3));
 
 		Tasks taskExemple11 = taskRepository.save(new Tasks(null, "exemple11",
-				new Date(), "onzieme essai", true,false, marketing,user3));
+				new Date(), "onzieme essai", true, marketing,user3));
+
+		 */
 	}
 
 }

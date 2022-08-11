@@ -3,9 +3,9 @@
 }
 .home {
     box-shadow: 10px 10px 5px 0px #fefae8;
-    background-image: url('/assets/img/toDoHome.jpg');
-    background-position: center;
+    background-image: url('/assets/img/hometask.png');
     height: 500px;
+    width: 1100px !important;
 }
 .home h1 {
     color: white;
@@ -23,12 +23,34 @@
 .x-del {
     cursor: pointer;
     margin: 5px;
+    
+}
+.x-del:hover{
+   background-color: red;
+   
 }
 /* edition */
 .x-edit {
     cursor: pointer;
     margin: 5px;
 }
+.x-edit:hover{
+    border-radius: 100%;
+    background-color: black;
+}
+
+/* modal create */
+#modalSize{
+    border: 3px solid #f7e7de;
+}
+
+
+
+
+
+
+
+
 
 /*Variables CSS*/
 :root {
