@@ -17,16 +17,16 @@ export class UserTasksComponent implements OnInit {
   category: Category | undefined;
   task!: Tasks;
   error = null;
-  modalAction ="";
+  modalAction = "";
 
   searchForm: FormGroup;
   myForm: FormGroup;
-  newSearch="";
-  researchTasks: Tasks[]= [];
+  newSearch = "";
+  researchTasks: Tasks[] = [];
 
-// pagination
+  // pagination
   pages: number = 1
-  
+
   //modal add article
   displayStyle = "none";
   displayBlur = "blur(0)"
@@ -104,16 +104,16 @@ export class UserTasksComponent implements OnInit {
   }
 
   createPopup() {
-    this.modalAction="C";
+    this.modalAction = "C";
     this.displayStyle = "block";
     this.displayBlur = "blur(4px)";
   }
 
-  editPopup(t : Tasks){
+  editPopup(t: Tasks) {
     this.modalAction = "E";
     this.displayStyle = "block";
     this.displayBlur = "blur(4px)";
-    this.task=t
+    this.task = t
   }
 
   closePopup() {
@@ -122,9 +122,10 @@ export class UserTasksComponent implements OnInit {
     setTimeout(() => {
       this.ngOnInit()
     }, 1500)
+    location.reload();
   }
 
-  getTargetTask(){
+  getTargetTask() {
     return this.task;
   }
 
@@ -140,8 +141,9 @@ export class UserTasksComponent implements OnInit {
     }
   }
 
-  onSearch(form:FormGroup){
+  onSearch(form: FormGroup) {
     console.log(form.value);
+<<<<<<< HEAD
       this.apiService.getTasksBySearch(form.value.newSearch).subscribe({
         next: (data) => (this.tasks=data,
            console.log("++++++++++" +data),
@@ -161,6 +163,31 @@ export class UserTasksComponent implements OnInit {
         complete: () => this.error =null
       })
     }
+=======
+    this.apiService.getTasksBySearch(form.value.newSearch).subscribe({
+      next: (data) => (this.tasks = data,
+        console.log("++++++++++" + data),
+        this.tasks.forEach(t => console.log(t)
+        )),
+      error: (err) => (this.error = err.message),
+      complete: () => (this.error = null),
+    });
+
+
+  }
+
+  getTasksByCategory(catId: number) {
+    console.log("clic");
+    this.apiService.getUserTasksByCatId(catId).subscribe({
+      next: (data) => this.tasks = data,
+      error: (err) => this.error = err.message,
+      complete: () => this.error = null
+    })
+  }
+>>>>>>> 3478795a7e7f65599f1ccdf5c11d4286da6b1c82
 
 }
+
+
+
 
