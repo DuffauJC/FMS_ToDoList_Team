@@ -25,7 +25,7 @@ export class ApiService {
 
     public login(data: any) {
        // console.log(data)
-        return this.http.get<any>(environment.host + "/api/login/"+ data.mail)
+        return this.http.post<any>(environment.host + "/api/auth/signin", data)
     }
     public getUserTask(id: number) {
         return this.http.get<Tasks>(environment.host + "/task" + id)
