@@ -32,12 +32,16 @@ public class Role {
 	
 	@NotNull
 	private String role;
+
+
 	
 	@ManyToMany
 	@JoinTable(
 			name = "users_role",
 			joinColumns = {@JoinColumn(name = "roleId")},
-			inverseJoinColumns = {@JoinColumn(name = "usersId")})@JsonIgnore
+			inverseJoinColumns = {@JoinColumn(name = "usersId")}
+			)
+	@JsonIgnore
 	private List<Users> users;
 
 	/**
@@ -46,6 +50,9 @@ public class Role {
 	 */
 	public Role(Long id, String role) {
 		this.id = id;
+		this.role = role;
+	}
+	public Role( String role) {
 		this.role = role;
 	}
 }

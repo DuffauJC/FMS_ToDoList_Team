@@ -15,13 +15,13 @@ export class LoginComponent implements OnInit {
   error=false;
   ngForm: FormGroup
   data = {
-    mail: "",
+    username: "",
     password: ""
   }
   constructor(private apiService: ApiService, private router: Router, private authenticateService: AuthenticateService,) {
     
     this.ngForm = new FormGroup({
-      mail: new FormControl(this.data.mail),
+      username: new FormControl(this.data.username),
       password: new FormControl(this.data.password)
     })
    }
@@ -32,12 +32,13 @@ export class LoginComponent implements OnInit {
   onLogin(form: FormGroup): void {
     //console.log(form.value);
     if (form.valid) {
-      this.data.mail = form.value.mail
+      this.data.username = form.value.username
       this.data.password = form.value.password
 
      // console.log(this.data)
      
-      let ok = this.authenticateService.veriFyLogin(this.data)
+       let ok = this.authenticateService.veriFyLogin(this.data)
+       
       //console.log(ok)
       if (ok) {
           setTimeout(() => {

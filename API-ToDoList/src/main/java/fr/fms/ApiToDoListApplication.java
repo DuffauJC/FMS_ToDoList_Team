@@ -37,7 +37,7 @@ public class ApiToDoListApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		System.out.println("Salut");
-		dataCreation();
+		//dataCreation();
 		//dataCreation();
 	}
 
@@ -46,23 +46,23 @@ public class ApiToDoListApplication implements CommandLineRunner {
 		Role admin = roleRepository.save(new Role(null, "ADMIN"));
 		Role user = roleRepository.save(new Role(null, "USER"));
 
-		Users user0 = usersRepository
-				.save(new Users(null, "c.lozzi@fms.com", "fms2022",  true ));
-		Users user1 = usersRepository
-				.save(new Users(null, "jc.duffau@fms.com", "fms2022",  true));
-		Users user2 = usersRepository
-				.save(new Users(null, "s.lefort@fms.com", "fms2022", true));
-		Users user3 = usersRepository
-				.save(new Users(null, "h.haage@fms.com", "fms2022",  true));
-		Users user4 = usersRepository
-				.save(new Users(null, "m.derand@fms.com", "fms2022",  true));
+//		Users user0 = usersRepository
+//				.save(new Users(null, "c.lozzi@fms.com", "fms2022",  true ));
+//		Users user1 = usersRepository
+//				.save(new Users(null, "jc.duffau@fms.com", "fms2022",  true));
+//		Users user2 = usersRepository
+//				.save(new Users(null, "s.lefort@fms.com", "fms2022", true));
+//		Users user3 = usersRepository
+//				.save(new Users(null, "h.haage@fms.com", "fms2022",  true));
+//		Users user4 = usersRepository
+//				.save(new Users(null, "m.derand@fms.com", "fms2022",  true));
 
-		Category administratif = categoryRepository.save(new Category(null,"Administratif"));
-		Category comptability = categoryRepository.save(new Category(null,"Comptability"));
-		Category formation = categoryRepository.save(new Category(null,"Formation"));
-		Category marketing = categoryRepository.save(new Category(null,"Marketing"));
-		Category humanRessource = categoryRepository.save(new Category(null,"Humane Ressources"));
-		Category production = categoryRepository.save(new Category(null,"Production"));
+//		Category administratif = categoryRepository.save(new Category(null,"Administratif"));
+//		Category comptability = categoryRepository.save(new Category(null,"Comptability"));
+//		Category formation = categoryRepository.save(new Category(null,"Formation"));
+//		Category marketing = categoryRepository.save(new Category(null,"Marketing"));
+//		Category humanRessource = categoryRepository.save(new Category(null,"Humane Ressources"));
+//		Category production = categoryRepository.save(new Category(null,"Production"));
 
 //		Tasks Fake1 = taskRepository.save(new Tasks(null, "truc1",
 //				new Date(), "Truc à test", true, formation));
@@ -74,11 +74,11 @@ public class ApiToDoListApplication implements CommandLineRunner {
 //				new Date(), "dernier truc à test", true,formation));
 
 
-		Tasks taskExemple0 = taskRepository.save(new Tasks(null, "exemple 0",
-				new Date(),"ce qui s'affiche sans user",
-				true,  formation, user1));
-		Tasks taskExemple1 = taskRepository.save(new Tasks(null, "exemple1",
-				new Date(), "premier essai", true, formation,user2));
+//		Tasks taskExemple0 = taskRepository.save(new Tasks(null, "exemple 0",
+//				new Date(),"ce qui s'affiche sans user",
+//				true,  formation, user1));
+//		Tasks taskExemple1 = taskRepository.save(new Tasks(null, "exemple1",
+//				new Date(), "premier essai", true, formation,user2));
 
 			/*Tasks taskExemple2 = taskRepository.save(new Tasks(null, "exemple2",
 				new Date(), "second essai", true, marketing,user2));

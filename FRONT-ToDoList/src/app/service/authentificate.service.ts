@@ -15,16 +15,18 @@ export class AuthenticateService {
         //console.log(data)
         
         this.apiService.login(data).subscribe(response => {
-            //console.log(response)
+            console.log(response)
 
             //if existant user mail in response && decode password verif
-            if (response.mail === data.mail && response.password === data.password) {
+            if (response.accessToken) {
                 this.setUserInStorage({
                     id:response.id,
                     mail: response.mail,
-                    active:response.active
+                    username:response.username,
+                    roles:response.roles
                    
                 })
+                localStorage.setItem('accessToken',JSON.stringify(response.accessToken))
                 this.ok = true
             } else {
                 this.ok = false
