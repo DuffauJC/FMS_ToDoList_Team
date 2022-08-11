@@ -31,7 +31,7 @@
                     <div class="d-flex flex-row justify-content-between">
                         <p>{{t.nameTask}}</p>
                         <p class="mb-0"> Catégorie : {{t.category.name}} </p>
-                        <p> Date : {{t.dateTask}} </p>
+                        <p> Date : {{t.dateTask |date:'dd.MM.YYYY'}} </p>
                     </div>
                     <div class="d-flex flex-row shadow-lg p-3 mb-0 bg-body rounded w-100 mb-5 justify-content-between">
                         <div class="d-flex flex-row align-items-center">
