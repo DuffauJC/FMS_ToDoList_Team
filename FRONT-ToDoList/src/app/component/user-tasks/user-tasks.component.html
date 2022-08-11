@@ -30,7 +30,7 @@
 
                 <!--  exemple d'item  -->
                 <div *ngFor="let t of tasks | paginate: { itemsPerPage: 5, currentPage: pages }">
-                    <div *ngIf="t.users.username ==name">
+                    <div *ngIf="t.users.username ===name">
                         <div class="d-flex flex-row justify-content-between">
                             <p>{{t.nameTask}}</p>
                             <p class="mb-0"> Catégorie : {{t.category.name}} </p>

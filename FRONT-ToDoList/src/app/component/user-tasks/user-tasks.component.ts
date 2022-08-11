@@ -68,6 +68,7 @@ export class UserTasksComponent implements OnInit,DoCheck {
     this.getAllTasks();
     this.getAllCategories();
     this.isAuthenticated()
+    this.showName()
     //console.log(this.categories + "+++++++++++++++++++++++++++++++" + this.tasks);
   }
 
@@ -165,7 +166,7 @@ export class UserTasksComponent implements OnInit,DoCheck {
     let rep = this.authenticateService.getUserFromStorage()
     if (rep != null) {
       this.name = rep.username
-    
+    console.log(this.name)
     }
   }
 }

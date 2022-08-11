@@ -27,7 +27,6 @@ export class AppComponent implements OnInit, DoCheck {
 
   ngOnInit(): void {
     this.showName();
-    this.isAuthenticated()
   }
 
   ngDoCheck(): void {
@@ -50,13 +49,6 @@ export class AppComponent implements OnInit, DoCheck {
     this.loggin = true
     this.logout = false
     this.router.navigateByUrl('home')
-  }
-  // token ou pas (si pas token redirect not found)
-  isAuthenticated() {
-    let rep = this.authenticateService.getToken()
-    if (rep == null) {
-      this.router.navigateByUrl('403')
-    }
   }
 }
 

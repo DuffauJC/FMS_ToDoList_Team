@@ -15,7 +15,7 @@ export class AuthenticateService {
         //console.log(data)
         
         this.apiService.login(data).subscribe(response => {
-            console.log(response)
+            //console.log(response)
 
             //if existant user mail in response && decode password verif
             if (response.accessToken) {
@@ -33,10 +33,10 @@ export class AuthenticateService {
             }
         })
         if (this.ok) {
-            console.log('ok');
+            //console.log('ok');
             return true
         } else {
-            console.log('false');
+            //console.log('false');
             return false
         }
 
