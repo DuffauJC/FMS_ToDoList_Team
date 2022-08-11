@@ -122,6 +122,7 @@ export class UserTasksComponent implements OnInit {
     setTimeout(() => {
       this.ngOnInit()
     }, 1500)
+    location.reload();
   }
 
   getTargetTask() {
@@ -164,6 +165,7 @@ export class UserTasksComponent implements OnInit {
   }
 
 }
+
 
 
 
