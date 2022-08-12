@@ -147,11 +147,13 @@ export class UserTasksComponent implements OnInit,DoCheck {
 
   getTasksByCategory(catId: number) {
     //console.log("clic");
+   
     this.apiService.getUserTasksByCatId(catId).subscribe({
       next: (data) => this.tasks = data,
       error: (err) => this.error = err.message,
       complete: () => this.error = null
     })
+    this.pages = 1
   }
 
 
