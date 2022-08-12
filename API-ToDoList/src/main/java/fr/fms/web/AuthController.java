@@ -1,4 +1,4 @@
-package fr.fms.security.controllers;
+package fr.fms.web;
 
 
 import fr.fms.dao.RoleRepository;
