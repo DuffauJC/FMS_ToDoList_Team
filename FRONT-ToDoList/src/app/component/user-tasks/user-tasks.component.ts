@@ -168,7 +168,6 @@ export class UserTasksComponent implements OnInit,DoCheck {
     let rep = this.authenticateService.getUserFromStorage()
     if (rep != null) {
       this.name = rep.username
-    console.log(this.name)
     }
   }
 }

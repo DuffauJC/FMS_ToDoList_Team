@@ -12,12 +12,16 @@ import { Category } from '../component/models/category.model';
 
 export class ApiService {
 
+
+    token  = localStorage.getItem("accessToken")
     headers = new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem("accessToken")}`
+        'Authorization': `Bearer ${this.token}`
     })
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {
+    //console.log(this.headers)
+    }
 
     public saveTask(task: Tasks) {
         return this.http.post<Tasks>(environment.host + "/task/saveTask", task, { headers: this.headers });
@@ -52,7 +56,7 @@ export class ApiService {
     }
 
     public getTasksBySearch(description: String) {
-        return this.http.get<Tasks[]>(environment.host + "/task/research/" + description)
+        return this.http.get<Tasks[]>(environment.host + "/task/research/" + description, { headers: this.headers })
     }
 
     public delTask(task: Tasks) {
@@ -60,7 +64,7 @@ export class ApiService {
     }
 
     public getUserTasksByCatId(id: number) {
-       //console.log(id);
+        //console.log(id);
         return this.http.get<Tasks[]>(environment.host + "/task/category/" + id, { headers: this.headers });
     }
 

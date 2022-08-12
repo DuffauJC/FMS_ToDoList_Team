@@ -26,7 +26,7 @@ export class AuthenticateService {
                     roles:response.roles
                    
                 })
-                localStorage.setItem('accessToken',JSON.stringify(response.accessToken))
+                localStorage.setItem('accessToken',response.accessToken)
                 this.ok = true
             } else {
                 this.ok = false
